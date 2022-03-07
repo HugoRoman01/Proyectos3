@@ -1,3 +1,13 @@
-# Usuario/Universidad pueda crear torneos
+Funciones
 
-# Hablar con los de seguridad para las pistas de paddel
+ - Registro
+ - Login
+ - Control{ 
+   - Mostrar usuarios 
+   - Mostrar deportes
+   - Mostrar pistas
+ } 
+ - Crear evento
+ - Añadir integrantes
+ - Mostrar eventos
+ - Calendario
