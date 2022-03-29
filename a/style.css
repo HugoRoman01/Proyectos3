@@ -13,7 +13,7 @@ header{
     margin-top: -10px;
     margin-left: -10px;
     margin-right: -10px;
-	background: #13678A;
+	background: #184C78;
 	position: fixed;
 	width: 100%;
 	padding: 15px;
@@ -69,7 +69,7 @@ nav{
     height: 380px;
 	z-index: 1;
 	padding: 90px 30px 30px;
-	background: #13678A;
+	background: #184C78;
 	opacity: 0;
 	transition: all 0.75s ease;
 	font-size: 1.2em;
