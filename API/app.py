@@ -1,4 +1,5 @@
 import json
+from os import access
 import db_functions as db
 from flask import Flask, jsonify, request
 from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
@@ -7,9 +8,10 @@ app = Flask(__name__)
 
 #Configuramos JWT (Json Web Token)
 app.config["JWT_SECRET_KEY"] = "t0k3n_D3v3l0p3r"
+app.config['JWT_TOKEN_LOCATION'] = ['headers', 'query_string']
 jwt = JWTManager(app)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET','POST'])
 def hello_world():
     response = jsonify({'message': 'Hello World!'})
     response.headers.add('Access-Control-Allow-Origin', '*')
@@ -17,7 +19,6 @@ def hello_world():
 
 @app.route('/api/login', methods=['POST'])
 def login():
-
 
     email = request.form['email']
     password = request.form['password']
@@ -37,6 +38,17 @@ def login():
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
     return respuesta
 
+@app.route('/api/getUser', methods=['GET'])
+@jwt_required()
+def getUser():
+    print("adada")
+    current_user_id = get_jwt_identity()
+    usuario = db.getUser(current_user_id)
+    usuario['status'] = 'OK'
+    respuesta = jsonify(usuario)
+    respuesta.headers.add('Access-Control-Allow-Origin', '*')
+    return respuesta
+
 
 @app.route('/api/registro', methods=['POST'])
 def registro():
@@ -48,16 +60,17 @@ def registro():
 
     if nombre_completo == None or email == None or password == None or matriculacion == None:
         respuesta = {'status': 'ERROR', 'message': 'Faltan parametros'}
+        return jsonify(respuesta)
 
     usuario = db.registro(nombre_completo, email, password, matriculacion)
 
     if usuario:
-        respuesta = {'status':'OK','id': usuario.id, 'nombre_completo': usuario.nombre_completo, 'email': usuario.email, 'matriculacion': usuario.matriculacion}
+        respuesta = jsonify({'status':'OK','id': usuario.id, 'nombre_completo': usuario.nombre_completo, 'email': usuario.email, 'matriculacion': usuario.matriculacion})
     else:
-        respuesta = {'status':'ERROR', 'message': 'Usuario ya existe'}
+        respuesta = jsonify({'status':'ERROR', 'message': 'Usuario ya existe'})
 
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    return jsonify(respuesta)
+    return respuesta
 
 @app.route('/api/darInsignia', methods=['POST'])
 def insignias():
@@ -71,12 +84,12 @@ def insignias():
         db.darInsignia(id_usuario, id_insignia)
     
         if insignias:
-            respuesta = {'status':'OK'}
+            respuesta = jsonify({'status':'OK'})
         else:
-            respuesta = {'status':'ERROR', 'message': 'Usuario no existe'}
+            respuesta = jsonify({'status':'ERROR', 'message': 'Usuario no existe'})
         
         respuesta.headers.add('Access-Control-Allow-Origin', '*')
-        return jsonify(respuesta)    
+        return respuesta
 
 
 @app.route('/api/crearEvento', methods=['POST'])
