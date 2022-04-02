@@ -1,38 +1,47 @@
-from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from db import Base, engine
 
-db = SQLAlchemy()
+# Creamos la tabla usuario
+class User(Base):
+    __tablename__ = 'Users'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre_completo = Column(String(50), nullable=False, unique=True)
+    email = Column(String(50), nullable=False, unique=True)
+    hash_password = Column(String(128))
+    matriculacion = Column(String(4), nullable=False)
+    descripcion = Column(String(250))
 
-class User(db.Model):
-    __tablename__ = 'users'
+class Insignias(Base):
+    __tablename__ = 'Insignias'
+    id_insignia = Column(Integer, primary_key=True, nullable=False)
+    id_usuario = Column(Integer, ForeignKey('Users.id'), primary_key=True, nullable=False)
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime(), nullable=False, default=db.func.current_timestamp())
+# Creamos la tabla Participacion
+class Integrante(Base):
+    __tablename__ = 'Integrantes'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    id_usuario = Column(Integer, ForeignKey('Users.id'), nullable=False)
+    id_evento = Column(Integer, ForeignKey('Eventos.id_evento'), nullable=False)
 
-    @classmethod
-    def create(cls, username, password):
-        user = cls(username=username, password=password)
-        return user.save()
+# Creamos la tabla Deportes
+class Deporte(Base):
+    __tablename__ = 'Deportes'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String(50), nullable=False)
 
-    def save(self):
+class Evento(Base):
+    __tablename__ = 'Eventos'
+    id_evento = Column(Integer, primary_key=True, autoincrement=True)
+    id_usuario = Column(Integer, ForeignKey('Users.id'), nullable=False)                        # Foreing key
+    id_deporte = Column(Integer, ForeignKey('Deportes.id'), nullable=False)                        # Foreing key                       # Foreing key
+    max_participantes = Column(Integer, nullable=False)
+    nombre_evento = Column(String(50), nullable=False)
+    descripcion_evento = Column(String(250))
+    fecha_inicio = Column(DateTime, nullable=False)
+    fecha_fin = Column(DateTime, nullable=False)
+    hora_inicio = Column(DateTime, nullable=False)
+    hora_fin = Column(DateTime, nullable=False)
 
-        try:
-            db.session.add(self)
-            db.session.commit()
 
-            return self
-
-        except:
-
-            return False
-    
-    def json(self):
-
-        return {
-            'id': self.id,
-            'user': self.username,
-            'password': self.password,
-            'created_at': self.created_at
-        }
+# Ejecutamos create_all() para crear la tabla en la base de datos
+Base.metadata.create_all(engine)

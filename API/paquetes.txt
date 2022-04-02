@@ -1,0 +1,5 @@
+LOGIN
+curl -d "email=$EMAIL&password=$PASSWORD" -X POST http://127.0.0.1:5000/api/login
+
+PROTECTED
+curl -H "Authorization: Bearer $TOKEN" http://127.0.0.1:5000/api/protected

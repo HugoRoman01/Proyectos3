@@ -1,0 +1,4 @@
+passlib
+bcrypt
+flask
+flask-jwt-extended

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1_name">No has iniciado sesión<h1>
+
+    <hr>
+
+    <h2 id="login">Iniciar sesión</h2>
+    <form id="form_login" method="post">
+        <br>
+        <input type="email" name="email" placeholder="email">
+        <br>
+        <input type="password" name="password" placeholder="Contraseña">
+        <br>
+        <input type="submit" value="Iniciar sesión">
+    </form>
+
+    <div id="login_div"></div>
+
+    <hr>
+
+    <h2 id="register">Registrarse</h2>
+    <form id="form_register" action="register.php" method="post">
+        <br>
+        <input type="text" name="nombre_completo" placeholder="Nombre completo">
+        <br>
+        <input type="email" name="email" placeholder="Email">
+        <br>
+        <input type="password" name="password" placeholder="Contraseña">
+        <br>
+        <input type="text" name="matriculacion" placeholder="Matriculación">
+        <br>
+        <input type="submit" value="Registrarse">
+    </form>
+
+    <div id="register_div"></div>
+
+    <hr>
+
+    <h2 id="Ver eventos">Ver eventos</h2>
+    <form id="form_eventos" action="eventos.php" method="post">
+        <input type="submit" value="Ver eventos">
+    </form>
+
+    <div id="eventos_div"></div>
+
+    <hr>
+
+    <h2 id="Crear evento">Crear evento</h2>
+
+    <form id="form_crear_evento" action="crear_evento.php" method="post">
+        <label for "deporte">Elige el deporte </label>
+        <select id="deporte" name="deporte">
+            <option value="1">Fútbol</option>
+            <option value="1">Baloncesto</option>
+            <option value="2">Tenis</option>
+        </select>
+        <label>Número de jugadores máximos</label>
+        <input type="number">
+        <input type="text" name="nombre_evento" placeholder="Nombre del evento">
+        <input type="text" name="descripcion_evento" placeholder="Descripción del evento">
+        <br>
+        <input type="date" name="fecha_evento" placeholder="Fecha del evento">
+        <input type="submit" value="Crear evento">
+
+</body>
+</html>
