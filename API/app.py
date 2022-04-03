@@ -1,7 +1,8 @@
+from datetime import datetime, timedelta
 import json
 from os import access
 import db_functions as db
-from flask import Flask, jsonify, request
+from flask import Flask, g, jsonify, request
 from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
 
 app = Flask(__name__)
@@ -9,6 +10,7 @@ app = Flask(__name__)
 #Configuramos JWT (Json Web Token)
 app.config["JWT_SECRET_KEY"] = "t0k3n_D3v3l0p3r"
 app.config['JWT_TOKEN_LOCATION'] = ['headers', 'query_string']
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
 
 @app.route('/', methods=['GET','POST'])
@@ -92,35 +94,48 @@ def insignias():
         return respuesta
 
 
-@app.route('/api/crearEvento', methods=['POST'])
+@app.route('/api/crearEvento', methods=['GET'])
 @jwt_required()
 def crearEvento():
     current_user_id = get_jwt_identity()
-    id_deporte = request.form['id_deporte']
-    max_participantes = request.form['max_participantes']
-    nombre_evento = request.form['nombre_evento']
-    descripcion_evento = request.form['descripcion_evento']
-    
-    fecha_inicio = request.form['fecha_inicio']
-    fecha_fin = request.form['fecha_fin']
-    hora_inicio = request.form['hora_inicio']
-    hora_fin = request.form['hora_fin']
 
-    # Primero comprobamos si hay algún otro evento en ese horario
-    if db.comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, hora_fin):
-        db.crearEvento(current_user_id, id_deporte, max_participantes, nombre_evento, descripcion_evento, fecha_inicio, fecha_fin, hora_inicio, hora_fin)
-        respuesta = {'status':'OK'}
+    id_deporte = request.args.get('id_deporte')
+    max_participantes = request.args.get('max_participantes')
+    nombre_evento = request.args.get('nombre_evento')
+    descripcion_evento = request.args.get('descripcion_evento')
+    fecha_inicio = request.args.get('fecha_inicio')
+    fecha_fin = request.args.get('fecha_fin')
+    hora_inicio = request.args.get('hora_inicio')
+    hora_fin = request.args.get('hora_fin')
+
+    #Convierto fecha y hora a formato datetime
+    fecha_inicio = datetime.strptime(fecha_inicio, '%Y-%m-%d')
+    fecha_fin = datetime.strptime(fecha_fin, '%Y-%m-%d')
+
+    hora_inicio = datetime.strptime(hora_inicio, '%H:%M').time()
+    hora_fin = datetime.strptime(hora_fin, '%H:%M').time()
+
+    # Primero comprobamos que el inicio sea anterior al fin tanto en fecha como en hora
+    if fecha_inicio > fecha_fin or (fecha_inicio == fecha_fin and hora_inicio > hora_fin) or (hora_inicio >= hora_fin):
+        respuesta = jsonify({'status': 'ERROR', 'message': 'La fecha o la hora de inicio debe ser anterior a la fecha de fin'})
+        
     else:
-        respuesta = {'status':'ERROR', 'message': 'No hay disponibilidad'}
+        # Segundo comprobamos si hay algún otro evento en ese horario
+        if db.comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, hora_fin):
+            db.crearEvento(current_user_id, id_deporte, max_participantes, nombre_evento, descripcion_evento, fecha_inicio, fecha_fin, hora_inicio, hora_fin)
+            respuesta = jsonify({'status':'OK'})
+        else:
+            respuesta = jsonify({'status':'ERROR', 'message': 'No hay disponibilidad'})
 
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    return jsonify(respuesta)
+    return respuesta
 
 @app.route('/api/getEventos')
+@jwt_required()
 def getEventos():
-    respuesta = db.getEventos()
+    respuesta = jsonify(db.getEventos())
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    return jsonify(respuesta)
+    return respuesta
 
 if __name__ == '__main__':
     app.run()

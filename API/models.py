@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey
 from db import Base, engine
 
 # Creamos la tabla usuario
@@ -39,8 +39,8 @@ class Evento(Base):
     descripcion_evento = Column(String(250))
     fecha_inicio = Column(DateTime, nullable=False)
     fecha_fin = Column(DateTime, nullable=False)
-    hora_inicio = Column(DateTime, nullable=False)
-    hora_fin = Column(DateTime, nullable=False)
+    hora_inicio = Column(Time, nullable=False)
+    hora_fin = Column(Time, nullable=False)
 
 
 # Ejecutamos create_all() para crear la tabla en la base de datos

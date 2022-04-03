@@ -77,7 +77,7 @@ def getEventos():
     query = session.query(Evento)
     data = []
     for evento in query:
-        data.append(evento.id_evento)
+        data.append({'id_evento': evento.id_evento, 'id_usuario': evento.id_usuario, 'id_deporte': evento.id_deporte, 'max_participantes': evento.max_participantes, 'nombre_evento': evento.nombre_evento, 'descripcion_evento': evento.descripcion_evento, 'fecha_inicio': evento.fecha_inicio, 'fecha_fin': evento.fecha_fin, 'hora_inicio': str(evento.hora_inicio), 'hora_fin': str(evento.hora_fin)})
     return data
 # Contructores de Consultas
 
@@ -125,7 +125,7 @@ def darInsignia(id_usuario, id_insignia):
 
 def comprobarDisponibilidad(id_deporte,fecha_inicio, fecha_fin, hora_inicio, hora_fin):
     # Aqui hay lio, por las comparaciones de fechas y horas
-    query = session.query(Evento).filter(Evento.id_deporte == id_deporte, Evento.fecha_inicio <= fecha_fin, Evento.fecha_fin >= fecha_inicio, Evento.hora_fin >= hora_inicio, Evento.hora_inicio <= hora_fin)
+    query = session.query(Evento).filter(Evento.id_deporte == id_deporte, Evento.fecha_inicio <= fecha_fin, Evento.fecha_fin >= fecha_inicio, Evento.hora_inicio <= hora_fin, Evento.hora_fin >= hora_inicio)
 
     if query.count() == 0:
         return True
