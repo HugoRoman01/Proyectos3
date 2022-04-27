@@ -18,9 +18,9 @@ def crearDeporte(nombre):
     return deporte
 
 def hashearPassword(plain_text_password):
-    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+    return bcrypt.hashpw(plain_text_password.encode("utf8"), bcrypt.gensalt())
 def VerificarPassword(plain_text_password, hashed_password):
-    return bcrypt.checkpw(plain_text_password, hashed_password)
+    return bcrypt.checkpw(plain_text_password.encode("utf8"), hashed_password.encode("utf8"))
 
 def crearUsuario(nombre_completo, email, password, matriculacion):
     
