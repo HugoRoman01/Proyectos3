@@ -6,7 +6,7 @@ $(document).ready(function(){
   if(access_token!=null){
     // Si el usuario ya está logeado pide la informacion de este
     
-    $.get("http://127.0.0.1:5000/api/getUser", {'jwt':access_token}, function(data){
+    $.get("http://127.0.0.1:5000/api/getUser/", {'jwt':access_token}, function(data){
       if(data['status']=='OK'){
         $("#h1_name").html("Bienvenido, " + data['nombre_completo']);
         $("#btn_logout").show();
@@ -23,7 +23,7 @@ $(document).ready(function(){
   $('#btn_login').click(function(){
     var email = $('#login_email').val();
     var password = $('#login_password').val();
-    $.post( "http://127.0.0.1:5000/api/login", {'email':email,'password':password} ,function( data ) {
+    $.post( "http://127.0.0.1:5000/api/login/", {'email':email,'password':password} ,function( data ) {
         
       if(data['status'] == 'OK'){
         $.cookie('access_token', data['access_token']);
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
     var paquete = {'nombre_completo':nombre_completo,'email':email,'password':password,'matriculacion':matriculacion};
 
-    $.post( "http://127.0.0.1:5000/api/registro", paquete, function(data){
+    $.post( "http://127.0.0.1:5000/api/registro/", paquete, function(data){
       if(data['status'] == 'OK'){
         $("#login_div").html(data);
         console.log(data);
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
     var paquete = {'jwt':access_token,'id_deporte':deporte,'max_participantes':max_participantes,'nombre_evento':nombre_evento,'descripcion_evento':descripcion_evento,'fecha_inicio':fecha_inicio,'fecha_fin':fecha_fin,'hora_inicio':hora_inicio,'hora_fin':hora_fin}; 
     console.log(paquete);
-    $.get("http://127.0.0.1:5000/api/crearEvento", paquete, function(data){
+    $.get("http://127.0.0.1:5000/api/crearEvento/", paquete, function(data){
       if(data['status'] == 'OK'){
         $("#crear_evento_div").html("Evento creado con éxito");
         console.log(data);
@@ -98,7 +98,7 @@ $(document).ready(function(){
   $("#btn_ver_eventos").click(function(){
   
     var paquete = {'jwt':access_token};
-    $.get("http://localhost:5000/api/getEventos", paquete, function(data){
+    $.get("http://localhost:5000/api/getEventos/", paquete, function(data){
     
       console.log(data)
       // For each evento in data jquery
@@ -118,8 +118,6 @@ $(document).ready(function(){
         $("#eventos_div").append(div);
 
       });
-
-      
 
     });
   

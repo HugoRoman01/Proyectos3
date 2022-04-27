@@ -1,23 +1,17 @@
-from datetime import datetime, timedelta
-import json
-from os import access
+from datetime import datetime
+from config import app, jsonify, create_access_token, jwt_required, get_jwt_identity, request
 import db_functions as db
-from flask import Flask, g, jsonify, request
-from flask_jwt_extended import create_access_token, JWTManager, jwt_required, get_jwt_identity
 
-app = Flask(__name__)
+from modulos.login import login
 
-#Configuramos JWT (Json Web Token)
-app.config["JWT_SECRET_KEY"] = "t0k3n_D3v3l0p3r"
-app.config['JWT_TOKEN_LOCATION'] = ['headers', 'query_string']
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
-jwt = JWTManager(app)
 
 @app.route('/', methods=['GET','POST'])
 def hello_world():
     response = jsonify({'message': 'Hello World!'})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+app.register_blueprint(login, url_prefix='/api/login_mod')
 
 @app.route('/api/login', methods=['POST'])
 def login():

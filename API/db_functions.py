@@ -1,4 +1,4 @@
-from db import Base, engine
+from config import Base, engine
 from models import *
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime, timedelta
