@@ -37,7 +37,7 @@ def login():
 @app.route('/api/getUser', methods=['GET'])
 @jwt_required()
 def getUser():
-    print("adada")
+
     current_user_id = get_jwt_identity()
     usuario = db.getUser(current_user_id)
     usuario['status'] = 'OK'

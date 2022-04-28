@@ -6,7 +6,7 @@ $(document).ready(function(){
   if(access_token!=null){
     // Si el usuario ya está logeado pide la informacion de este
     
-    $.get("http://127.0.0.1:5000/api/getUser/", {'jwt':access_token}, function(data){
+    $.get("http://127.0.0.1:5000/api/login/getUser", {'jwt':access_token}, function(data){
       if(data['status']=='OK'){
         $("#h1_name").html("Bienvenido, " + data['nombre_completo']);
         $("#btn_logout").show();
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
     var paquete = {'jwt':access_token,'id_deporte':deporte,'max_participantes':max_participantes,'nombre_evento':nombre_evento,'descripcion_evento':descripcion_evento,'fecha_inicio':fecha_inicio,'fecha_fin':fecha_fin,'hora_inicio':hora_inicio,'hora_fin':hora_fin}; 
     console.log(paquete);
-    $.get("http://127.0.0.1:5000/api/crearEvento/", paquete, function(data){
+    $.get("http://127.0.0.1:5000/api/eventos/crearEvento", paquete, function(data){
       if(data['status'] == 'OK'){
         $("#crear_evento_div").html("Evento creado con éxito");
         console.log(data);
@@ -98,11 +98,29 @@ $(document).ready(function(){
   $("#btn_ver_eventos").click(function(){
   
     var paquete = {'jwt':access_token};
-    $.get("http://localhost:5000/api/getEventos/", paquete, function(data){
+    $.get("http://localhost:5000/api/eventos/getEventos", paquete, function(data){
     
       console.log(data)
       // For each evento in data jquery
       $.each(data, function(index, value){
+
+        var deporte = value['id_deporte'];
+        console.log(deporte);
+
+        switch (deporte) {
+          case 1:
+            deporte = 'Futbol';
+            break;
+          case 2:
+            deporte = 'Baloncesto';
+            break;
+          case 3:
+            deporte = 'Tenis';
+            break;
+          default:
+            deporte = 'ERROR';
+        }
+
         // Create a new div
         var div = $("<div>");        div.addClass("evento");
         
@@ -112,7 +130,7 @@ $(document).ready(function(){
         div.append("<p>Fecha de fin: " + value['fecha_fin'] + "</p>");
         div.append("<p>Hora de inicio: " + value['hora_inicio'] + "</p>");
         div.append("<p>Hora de fin: " + value['hora_fin'] + "</p>");
-        div.append("<p>Deporte: " + value['deporte'] + "</p>");
+        div.append("<p>Deporte: " + deporte + "</p>");
         div.append("<p>Maximo de participantes: " + value['max_participantes'] + "</p>");
         // Append the div to the div with id "eventos"
         $("#eventos_div").append(div);
