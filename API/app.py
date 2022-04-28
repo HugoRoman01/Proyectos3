@@ -2,16 +2,12 @@ from datetime import datetime
 from config import app, jsonify, create_access_token, jwt_required, get_jwt_identity, request
 import db_functions as db
 
-from modulos.login import login
-
-
 @app.route('/', methods=['GET','POST'])
 def hello_world():
     response = jsonify({'message': 'Hello World!'})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-app.register_blueprint(login, url_prefix='/api/login_mod')
 
 @app.route('/api/login', methods=['POST'])
 def login():

@@ -1,5 +1,4 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_cors import cross_origin
+from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from security import VerificarPassword
 from models import db, User, Integrante, Insignias

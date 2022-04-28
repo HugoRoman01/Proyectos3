@@ -109,7 +109,7 @@ $(document).ready(function(){
 
         switch (deporte) {
           case 1:
-            deporte = 'Futbol';
+            deporte = 'Fútbol';
             break;
           case 2:
             deporte = 'Baloncesto';
