@@ -6,8 +6,6 @@ class Config:
     # App
     BASE_URL = 'http://localhost:5000'
 
-
-
     # JWT (Json Web Token)
     JWT_SECRET_KEY = 't0k3n_D3v3l0p3r'
     JWT_TOKEN_LOCATION = ['headers', 'query_string']
