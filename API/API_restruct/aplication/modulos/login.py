@@ -1,5 +1,5 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import create_access_token
+from flask import Blueprint, request, jsonify
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from security import VerificarPassword
 from models import db, User, Integrante, Insignias
 
@@ -34,7 +34,38 @@ def ingreso():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@login.route('/getUser', methods=['GET'])
+@jwt_required()
+def cookie_login():
+
+    if request.args.get('jwt') == None:
+        respone = jsonify({'status':'ERROR', 'message': 'Falta token'})
+        respone.headers.add('Access-Control-Allow-Origin', '*')
+        return respone
+    
+    current_user_id = get_jwt_identity()
+    usuario = getTokenUser(current_user_id)
+    usuario['status'] = 'OK'
+    
+    response = jsonify(usuario)
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
+
 # Funciones
+
+def getTokenUser(user_id):
+    query = db.session.query(User).filter_by(id=user_id)
+    if query.count() == 0:
+        return None
+    user = query.one()
+
+    participaciones = getParticipaciones(user.id)
+    insignias = getInsignias(user.id)
+
+    data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'participaciones': participaciones, 'insignias': insignias}
+    return data
 
 def getUser(email, password):
     user = db.session.query(User).filter_by(email=email)

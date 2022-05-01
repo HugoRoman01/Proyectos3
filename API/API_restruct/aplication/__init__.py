@@ -22,9 +22,13 @@ def init_app():
         # Incluimos nuestras rutas
         from .modulos.login import login
         from .modulos.registro import registro
+        from .modulos.eventos import eventos
+        from .modulos.admin import admin
 
         # Registro de blueprints
         app.register_blueprint(login, url_prefix='/api/login')
         app.register_blueprint(registro, url_prefix='/api/registro')
+        app.register_blueprint(eventos, url_prefix='/api/eventos')
+        app.register_blueprint(admin, url_prefix='/api/admin')
 
         return app

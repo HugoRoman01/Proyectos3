@@ -27,5 +27,3 @@ class Config:
     MAIL_PASSWORD = 'D3VTD3rbMQCndLS'
     FLASKY_MAIL_SUBJECT_PREFIX = '[Confirmar cuenta]'
     FLASKY_MAIL_SENDER = 'David Villaverde'
-
-     
