@@ -8,6 +8,8 @@ admin = Blueprint('admin', __name__)
 @jwt_required()
 def darInsignia():
 
+    
+
     if get_jwt_identity() != 1:
         respuesta = jsonify({'status':'ERROR', 'message': 'No tiene permisos'})
         respuesta.headers.add('Access-Control-Allow-Origin', '*')

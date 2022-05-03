@@ -8,6 +8,7 @@ $(document).ready(function(){
     
     $.get("http://127.0.0.1:5000/api/login/getUser", {'jwt':access_token}, function(data){
       if(data['status']=='OK'){
+        console.log(data);
         $("#h1_name").html("Bienvenido, " + data['nombre_completo']);
         $("#btn_logout").show();
       }
@@ -157,6 +158,25 @@ $(document).ready(function(){
 
     });
   
+  });
+
+  $('#btn_insignia').click(function(){
+
+    var id_user = $('#id_user').val();
+    var id_insignia = $('#id_insignia').val();
+
+    var paquete = {'jwt':access_token,'id':id_user,'insignia':id_insignia};
+
+    $.get("http://localhost:5000/api/admin/darInsignia", paquete, function(data){
+      console.log(data);
+      if (data['status'] == 'OK'){
+        console.log("Insignia dada correctamente");
+      }else{
+        console.log("Error al dar insignia");
+      }
+    });
+
+
   });
   
 }); 

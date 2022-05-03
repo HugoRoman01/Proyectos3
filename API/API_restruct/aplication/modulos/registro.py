@@ -12,7 +12,8 @@ def register():
     matriculacion = request.form['matriculacion']
 
     if nombre_completo == None or email == None or password == None or matriculacion == None:
-        respuesta = {'status': 'ERROR', 'message': 'Faltan parametros'}
+        respuesta = jsonify({'status': 'ERROR', 'message': 'Faltan parametros'})
+        respuesta.headers.add('Access-Control-Allow-Origin', '*')
         return jsonify(respuesta)
 
     usuario = registrar(nombre_completo, email, password, matriculacion)
@@ -67,7 +68,9 @@ def registrar(nombre_completo, email, password, matriculacion):
         guardarToken(token=token, user_id=usuario.id)
 
         # Envio el email de confirmación
+        print("Enviando email de confirmacion")
         enviarEmailConfirmacion(email, token)
+        print("Email enviado")
 
         return usuario
     else:
