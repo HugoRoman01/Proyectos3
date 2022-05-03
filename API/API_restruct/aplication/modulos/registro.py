@@ -50,7 +50,7 @@ def confirmar():
 
 @registro.route('/test')
 def test():
-    return jsonify({'status': 'OK', 'message': 'Test_register'})
+    return jsonify({'status': 'OK'})
 
 
 def registrar(nombre_completo, email, password, matriculacion):

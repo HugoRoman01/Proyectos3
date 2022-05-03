@@ -67,6 +67,24 @@ $(document).ready(function(){
 
   });
 
+  $("#btn_inscribir").click(function(){
+
+    var id_evento = $('#id_evento').val();
+
+    var paquete = {'jwt':access_token,'id_evento':id_evento};
+
+    $.get("http://localhost:5000/api/eventos/inscribir", paquete, function(data){
+
+      if (data['status'] == 'OK'){
+        console.log("Inscrito correctamente");
+      }else{
+        console.log("Error al inscribirse");
+      }
+
+    });
+
+  });
+
   $("#btn_crear_evento").click(function(){
 
     var max_participantes = $('#max_participantes').val();

@@ -24,7 +24,7 @@ def darInsignia():
     id = request.args.get('id')
     insignia = request.args.get('insignia')
     
-    user = User.query.filter_by(id=id).first()
+    user = db.session.query(User).filter_by(id=id).first()
 
     if user == None:
         respuesta = jsonify({'status':'ERROR', 'message': 'No existe el usuario'})
@@ -41,4 +41,4 @@ def darInsignia():
 
 @admin.route('/test')
 def test():
-    return jsonify({'status': 'OK', 'message': 'Test_admin'})
+    return jsonify({'status': 'OK'})

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import db, Evento
+from models import db, Evento, Integrante
 from datetime import datetime, timedelta
 
 
@@ -18,6 +18,37 @@ def getEventos():
     respuesta = jsonify(data)
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
     return respuesta
+
+@eventos.route('/inscribir', methods=['GET'])
+@jwt_required()
+def inscribir():
+
+    current_user_id = get_jwt_identity()
+    id_evento = request.args.get('id_evento')
+
+    if id_evento == None:
+        response = jsonify({'status': 'ERROR', 'message': 'Faltan parametros'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
+    query = db.session.query(Evento).filter_by(id_evento=id_evento)
+
+    if query.count() == 0:
+        response = jsonify({'status': 'ERROR', 'message': 'Evento no existe'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+    
+    # Meto en la tabla integrantes
+    integrante = Integrante(id_evento=id_evento, id_usuario=current_user_id)
+    db.session.add(integrante)
+    db.session.commit()
+
+    response = jsonify({'status': 'OK', 'message': 'Inscrito correctamente'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+
 
 @eventos.route('/crearEvento', methods=['GET'])
 @jwt_required()
@@ -82,7 +113,7 @@ def crearEvento():
 
 @eventos.route('/test')
 def test():
-    return jsonify({'status':'OK', 'message': 'Test_eventos'})
+    return jsonify({'status':'OK'})
 
 def comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, hora_fin):
     

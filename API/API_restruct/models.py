@@ -31,17 +31,11 @@ class Integrante(db.Model):
     id_usuario = Column(Integer, ForeignKey('Users.id'), nullable=False)
     id_evento = Column(Integer, ForeignKey('Eventos.id_evento'), nullable=False)
 
-# Creamos la tabla Deportes
-class Deporte(db.Model):
-    __tablename__ = 'Deportes'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    nombre = Column(String(50), nullable=False)
-
 class Evento(db.Model):
     __tablename__ = 'Eventos'
     id_evento = Column(Integer, primary_key=True, autoincrement=True)
     id_usuario = Column(Integer, ForeignKey('Users.id'), nullable=False) 
-    id_deporte = Column(Integer, ForeignKey('Deportes.id'), nullable=False) 
+    id_deporte = Column(Integer,  nullable=False) 
     max_participantes = Column(Integer, nullable=False)
     nombre_evento = Column(String(50), nullable=False)
     descripcion_evento = Column(String(250))
