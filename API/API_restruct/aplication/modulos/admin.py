@@ -38,3 +38,7 @@ def darInsignia():
     respuesta = jsonify({'status':'OK', 'message': 'Insignia dada'})
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
     return respuesta
+
+@admin.route('/test')
+def test():
+    return jsonify({'status': 'OK', 'message': 'Test_admin'})

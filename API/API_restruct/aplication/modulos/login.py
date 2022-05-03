@@ -53,7 +53,9 @@ def cookie_login():
 
     return response
 
-# Funciones
+@login.route('/test')
+def test():
+    return jsonify({'status':'OK', 'message': 'Test'})
 
 def getTokenUser(user_id):
     query = db.session.query(User).filter_by(id=user_id)

@@ -80,6 +80,10 @@ def crearEvento():
 
 # Funciones
 
+@eventos.route('/test')
+def test():
+    return jsonify({'status':'OK', 'message': 'Test_eventos'})
+
 def comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, hora_fin):
     
     query = db.session.query(Evento).filter(Evento.id_deporte == id_deporte, Evento.fecha_inicio <= fecha_fin, Evento.fecha_fin >= fecha_inicio, Evento.hora_inicio <= hora_fin, Evento.hora_fin >= hora_inicio)
