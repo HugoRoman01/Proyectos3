@@ -8,7 +8,7 @@ import '../../estilos/login.css'
 class Login extends React.Component {
 
   sendDataLogin = () => {
-    this.props.AppData('login');
+    this.props.AppData('enviar_login');
   }
 
   sendDataRegister = () => {
