@@ -22,6 +22,9 @@ $(document).ready(function(){
   });
 
   $('#btn_login').click(function(){
+
+    // { access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1Mzc2NjQzMywianRpIjoiYjA0ZTkzYTctMTE5ZS00NjAwLTgyYzMtMTNhZmMxMzRhMjgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNjUzNzY2NDMzLCJleHAiOjE2NTM4NTI4MzN9.Xt9cUaLD05reb_BHqqgcEthOaY2rYI6x3WzY3AphHFs", activo: true, email: "hugo.roman@live.u-tad.com", id: 4, insignias: [], matriculacion: "123456789", nombre_completo: "Hugo guapo", participaciones: 0, status: "OK" }
+
     var email = $('#login_email').val();
     var password = $('#login_password').val();
     $.post( "http://127.0.0.1:5000/api/login/", {'email':email,'password':password} ,function( data ) {
@@ -44,8 +47,9 @@ $(document).ready(function(){
   });
 
 
+
   $('#btn_registro').click(function(){
-  
+    
     var nombre_completo = $('#nombre_completo').val();
     var email = $('#email').val();
     var password = $('#password').val();
