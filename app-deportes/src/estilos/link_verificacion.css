@@ -1,4 +1,4 @@
-.titulo{
+.titulo_link{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -15,7 +15,7 @@
     line-height: 64px;
   }
   
-  .subtitulo{
+  .subtitulo_link{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -33,7 +33,7 @@
     line-height: 64px;
   }
   
-  .conjunto{
+  .conjunto_link{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -52,7 +52,7 @@
   
     }
   
-  .llegado{
+  .llegado_link{
     width: 60%;
     font-family: 'Montserrat';
     font-style: normal;
@@ -62,7 +62,7 @@
   }
   
   
-  .Reenviar{
+  .Reenviar_link{
     width: 20%;
     font-family: 'Montserrat';
     font-style: normal;
