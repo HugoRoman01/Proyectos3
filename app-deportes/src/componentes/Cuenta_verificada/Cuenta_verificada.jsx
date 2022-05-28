@@ -5,8 +5,8 @@ import '../../estilos/cuenta_verificada.css'
  
 class Cuenta_verificada extends React.Component {
 
-  sendData = (accion) => {
-    this.props.AppData(accion);
+  sendDataLoged = () => {
+    this.props.AppData('login');
   }
 
   render() {
@@ -22,7 +22,7 @@ class Cuenta_verificada extends React.Component {
         <p class="subtitulo_verificada">Inicia sesión para acceder a la comunidad.</p>
       </div>
 
-      <button class="boton_verificada" onClick={this.sendData('login')}>¡Vamos a ello!</button>
+      <button class="boton_verificada" onClick={this.sendData}>¡Vamos a ello!</button>
     </div>
   );
 }

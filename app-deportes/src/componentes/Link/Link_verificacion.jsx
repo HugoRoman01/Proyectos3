@@ -6,8 +6,8 @@ import '../../estilos/link_verificacion.css'
 class Link_verificacion extends React.Component {
 
   
-sendData = (accion) => {
-  this.props.AppData(accion);
+sendData = () => {
+  this.props.AppData('link_verificacion');
 }
 
   render() {
@@ -25,7 +25,7 @@ sendData = (accion) => {
 
       <div class="conjunto_link">
         <p class="llegado_link">¿No te ha llegado ningún correo?</p>
-        <p class="Reenviar_link" onClick={this.sendData('link_verificacion')}>Reenviar.</p>
+        <p class="Reenviar_link" onClick={this.sendData}>Reenviar.</p>
       </div>
 
     </div>

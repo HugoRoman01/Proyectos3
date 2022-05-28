@@ -5,8 +5,8 @@ import '../../estilos/intro_email.css'
 class Intro_email extends React.Component {
 
    
-  sendData = () => {
-    this.props.AppData("bienvenida");
+  sendDataPassword = () => {
+    this.props.AppData("register_password");
   }
 
   
@@ -27,7 +27,7 @@ class Intro_email extends React.Component {
       </div>
 
       <div>
-      <h1 class="flecha_password" onClick={this.sendData}>→</h1>
+      <h1 class="flecha_password" onClick={this.sendDataPassword}>→</h1>
       </div>
     </div>
   );

@@ -5,8 +5,8 @@ import '../../estilos/intro_contrasenia.css'
 
 class Intro_contrasenia extends React.Component {
 
-  sendData = (accion) => {
-    this.props.AppData(accion);
+  sendDataLink = () => {
+    this.props.AppData('link_verificacion');
   }
 
   render() {
@@ -31,7 +31,7 @@ class Intro_contrasenia extends React.Component {
         <input type="mail" id="input2_password" class="input-contra_password" placeholder="Contraseña"/>
       </div>
 
-      <h1 class="flecha_password" onClick={this.sendData('link_verificacion')}>→</h1>
+      <h1 class="flecha_password" onClick={this.sendDataLink}>→</h1>
 
     </div>
   );
