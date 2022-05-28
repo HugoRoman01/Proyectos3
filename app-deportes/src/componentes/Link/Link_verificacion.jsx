@@ -1,5 +1,7 @@
-
-function link_verificacion() {
+import React from "react";
+import '../../estilos/link_verificacion.css'
+ 
+function Link_verificacion() {
 
   return (
     <div>
@@ -21,4 +23,4 @@ function link_verificacion() {
   );
 }
 
-export default link_verificacion;
+export default Link_verificacion;

@@ -1,11 +1,15 @@
-import '../estilos/bienvenida.css'
+import '../../estilos/bienvenida.css'
 import React from 'react'
+import onClickk from '../../App'
 
-function bienvenida() {
+class Bienvenida extends React.Component {
 
+   goLogin(){
+    onClickk('login')
+  }
 
-
-  return (
+  render() {
+    return (
     <div>
 
       <div class="titulo">
@@ -16,12 +20,16 @@ function bienvenida() {
         <p class="subtitulo"> La comunidad deportiva de U-Tad, donde podrás crear torneos y participar en eventos deportivos creados por los alumnos del centro.</p>
       </div>
 
-      <button class="boton"> Acceder ahora </button>
+      <button class="boton" onClick={this.goLogin()}> <p class="txt_button">Acceder ahora</p> </button>
 
       <div class="imagen2-div"></div>
       <div class="imagen1-div"></div>
     </div>
-  )
+    )
+  }
+
 }
 
-export default bienvenida;
+
+
+export default Bienvenida;

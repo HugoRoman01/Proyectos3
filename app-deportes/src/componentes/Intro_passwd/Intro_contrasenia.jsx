@@ -1,5 +1,7 @@
-
-function intro_contrasenia() {
+import React from "react";
+import '../../estilos/intro_contrasenia.css'
+ 
+function Intro_contrasenia() {
 
 
   return (
@@ -27,4 +29,4 @@ function intro_contrasenia() {
   );
 }
 
-export default intro_contrasenia;
+export default Intro_contrasenia;

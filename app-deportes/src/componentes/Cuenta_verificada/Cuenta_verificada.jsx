@@ -1,5 +1,7 @@
-
-function cuenta_verificada() {
+import React from "react";
+import '../../estilos/cuenta_verificada.css'
+ 
+function Cuenta_verificada() {
 
   return (
     <div>
@@ -17,4 +19,4 @@ function cuenta_verificada() {
   );
 }
 
-export default cuenta_verificada;
+export default Cuenta_verificada;

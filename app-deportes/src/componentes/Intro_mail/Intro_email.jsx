@@ -1,6 +1,8 @@
+import React from "react";
+import '../../estilos/intro_email.css'
+ 
 
-
-function intro_email() {
+function Intro_email() {
 
 
   return (
@@ -20,4 +22,4 @@ function intro_email() {
   );
 }
 
-export default intro_email;
+export default Intro_email;
