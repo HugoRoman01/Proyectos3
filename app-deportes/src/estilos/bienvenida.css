@@ -1,4 +1,4 @@
-.titulo{
+.titulo_bienvenida{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -14,7 +14,7 @@
   
   }
   
-  .subtitulo{
+  .subtitulo_bienvenida{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -32,7 +32,7 @@
   }
   
   
-  .boton{
+  .boton_bienvenida{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -53,7 +53,7 @@
     
     }
 
-  .txt_button{
+  .txt_button_bienvenida{
     
       width: 180px;
       height: 40px;
@@ -76,7 +76,7 @@
       flex-grow: 0;
   }
   
-  .imagen2-div{
+  .imagen2-div_bienvenida{
     width: 521px;
     height: 693px;
     position: absolute;
@@ -89,7 +89,7 @@
     left: 72.8%;
   }
   
-  .imagen1-div{
+  .imagen1-div_bienvenida{
     width: 300px;
     height: 434px;
     position: absolute;
