@@ -1,6 +1,5 @@
-import './App.css';
 
-function App() {
+function link_verificacion() {
 
   return (
     <div>
@@ -22,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default link_verificacion;

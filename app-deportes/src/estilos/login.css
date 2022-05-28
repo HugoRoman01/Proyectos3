@@ -1,0 +1,132 @@
+
+.titulo{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0%;
+    position: absolute;
+    width:50%;
+    left: 30%;
+    top: 7%;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 200%;
+
+}
+
+
+
+
+.input-email{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 14px 13px;
+    position: absolute;
+    width: 25%;
+    left: 36%;
+    top: 30%;
+    background: #FFFFFF;
+
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 140%;
+    color: #A3A3A3;
+}
+
+.input-email:focus{    border: 4px solid #157AFF;}
+.input-contra:focus{    border: 4px solid #157AFF;}
+
+.input-contra{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 14px 13px;
+    position: absolute;
+    width: 25%;
+    left: 36%;
+    top: 40%;
+    background: #FFFFFF;
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 140%;
+    color: #A3A3A3;
+}
+
+.boton{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px 101px;    
+    position: absolute;
+    width: 367px;
+    height: 48px;
+    left: 39%;
+    top: 55%;
+    background: #157AFF;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+
+
+.veremos{
+    display:flex;
+    left: 40%;
+    top: 60%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    width: 20%;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+
+
+.crear-cuenta{
+
+    color: #157AFF;
+    cursor: pointer;
+}
+
+
+
+.subtitulo2{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: absolute;
+    width: 240px;
+    left: 40%;
+    top: 65%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    cursor: pointer;
+}

@@ -1,6 +1,5 @@
-import './App.css';
 
-function App() {
+function intro_contrasenia() {
 
 
   return (
@@ -28,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default intro_contrasenia;

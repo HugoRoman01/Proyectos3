@@ -1,6 +1,5 @@
-import './App.css';
 
-function App() {
+function login() {
 
 
   return (
@@ -33,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default login;
