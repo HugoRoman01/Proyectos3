@@ -7,9 +7,14 @@ import '../../estilos/login.css'
 
 class Login extends React.Component {
 
-  sendData = (accion) => {
-    this.props.AppData(accion);
+  sendDataLogin = () => {
+    this.props.AppData('login');
   }
+
+  sendDataRegister = () => {
+    this.props.AppData('register_email');
+  }
+
   render() {
 
   return (
@@ -27,11 +32,11 @@ class Login extends React.Component {
         <input type="mail" id="input2_login" class="input-contra_login" placeholder="Contraseña"/>
       </div>
 
-      <button class="boton_login" onClick={this.sendData('home')}>Iniciar sesión</button>
+      <button class="boton_login" onClick={this.sendDataLogin}>Iniciar sesión</button>
 
       <div class="veremos_login">
         <p class="subtitulo1_login">¿No tienes cuenta todavía? </p>
-        <p class="crear-cuenta_login" onClick={this.sendData('intro_mail')}>Crear cuenta</p>
+        <p class="crear-cuenta_login" onClick={this.sendDataRegister}>Crear cuenta</p>
       </div>
 
       <div>

@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie'
+
 import Bienvenida from "./componentes/Bienvenida/Bienvenida"
 import Login from './componentes/Login/Login';
 import Cuenta_verificada from './componentes/Cuenta_verificada/Cuenta_verificada';
@@ -8,13 +11,19 @@ import Link_verficacion from './componentes/Link/Link_verificacion';
 
 class App extends React.Component {
 
-  state = { page : 'bienvenida' }
+  constructor(props) {
+    super(props);
+    
+    this.state = {page:'bienvenida'};
+  }
 
   callbackFunction = (data) => {
     this.setState({ page : data });
+    console.log(data);
   }
 
   render() {
+
     switch (this.state.page) {
       case 'bienvenida':
         return ( <Bienvenida AppData={this.callbackFunction}/> );
@@ -25,10 +34,10 @@ class App extends React.Component {
       case 'verificada':
         return ( <Cuenta_verificada AppData={this.callbackFunction}/> );
 
-      case 'intro_email':
+      case 'register_email':
         return ( <Intro_email AppData={this.callbackFunction}/> );
 
-      case 'intro_contrasenia':
+      case 'register_password':
         return ( <Intro_contrasenia AppData={this.callbackFunction}/> );
 
       case 'link_verificacion':
