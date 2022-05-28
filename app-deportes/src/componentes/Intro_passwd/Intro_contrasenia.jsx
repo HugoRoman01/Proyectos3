@@ -28,10 +28,10 @@ class Intro_contrasenia extends React.Component {
       </div>
 
       <div>
-        <input type="mail" id="input2_password" class="input-contra_password" placeholder="Contraseña"/>
+        <input type="mail" id="input2_password" class="input-contra_password" placeholder="Repite tu contraseña"/>
       </div>
 
-      <h1 class="flecha_password" onClick={this.sendDataLink}>→</h1>
+      <h1 class="flecha_password" onClick={this.sendDataLink}>➞</h1>
 
     </div>
   );

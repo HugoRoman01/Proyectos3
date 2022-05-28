@@ -22,7 +22,7 @@ class Cuenta_verificada extends React.Component {
         <p class="subtitulo_verificada">Inicia sesión para acceder a la comunidad.</p>
       </div>
 
-      <button class="boton_verificada" onClick={this.sendData}>¡Vamos a ello!</button>
+      <button class="boton_verificada" onClick={this.sendDataLoged}>¡Vamos a ello!</button>
     </div>
   );
 }

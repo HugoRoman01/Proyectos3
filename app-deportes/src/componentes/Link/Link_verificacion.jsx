@@ -16,7 +16,7 @@ sendData = () => {
     <div>
 
       <div class="titulo_link">
-        <h1 >Has recibido un link de verificación a </h1>
+        <h1 >Has recibido un correo de verificación a </h1>
       </div>
 
       <div>

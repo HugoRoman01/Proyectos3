@@ -27,7 +27,7 @@ class Intro_email extends React.Component {
       </div>
 
       <div>
-      <h1 class="flecha_password" onClick={this.sendDataPassword}>→</h1>
+      <h1 class="flecha_email" onClick={this.sendDataPassword}>➞</h1>
       </div>
     </div>
   );
