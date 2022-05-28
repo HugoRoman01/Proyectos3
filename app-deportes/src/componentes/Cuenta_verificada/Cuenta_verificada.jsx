@@ -6,15 +6,15 @@ function Cuenta_verificada() {
   return (
     <div>
 
-      <div class="titulo">
+      <div class="titulo_verificada">
         <h1 >Tu cuenta ha sido verificada.</h1>
       </div>
 
       <div>
-        <p class="subtitulo">Inicia sesión para acceder a la comunidad.</p>
+        <p class="subtitulo_verificada">Inicia sesión para acceder a la comunidad.</p>
       </div>
 
-      <button class="boton">¡Vamos a ello!</button>
+      <button class="boton_verificada">¡Vamos a ello!</button>
     </div>
   );
 }
