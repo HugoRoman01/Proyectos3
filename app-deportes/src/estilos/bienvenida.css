@@ -60,7 +60,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background: linear-gradient(360deg, #157AFF -24.1%, rgba(147, 193, 255, 0) 59.02%);
-    background-image: url(../public/imagen2.png);
+    background-image: url(./imagenes/tio.png);
     box-shadow: 14px -1px 15px rgba(0, 0, 0, 0.25);
   
     top: 26%;
@@ -74,7 +74,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background: linear-gradient(360deg, #157AFF -24.1%, rgba(147, 193, 255, 0) 59.02%);
-    background-image: url(../public/imagen3.png);
+    background-image: url(./imagenes/tias.png);
   
     box-shadow: 14px -1px 15px rgba(0, 0, 0, 0.25);
     top: 53.7%;
