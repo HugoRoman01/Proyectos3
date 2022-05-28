@@ -1,4 +1,5 @@
 import '../estilos/bienvenida.css'
+import React from 'react'
 
 function bienvenida() {
 
