@@ -1,7 +1,16 @@
 import React from "react";
 import '../../estilos/link_verificacion.css'
+
+
  
-function Link_verificacion() {
+class Link_verificacion extends React.Component {
+
+  
+sendData = (accion) => {
+  this.props.AppData(accion);
+}
+
+  render() {
 
   return (
     <div>
@@ -16,11 +25,12 @@ function Link_verificacion() {
 
       <div class="conjunto_link">
         <p class="llegado_link">¿No te ha llegado ningún correo?</p>
-        <p class="Reenviar_link">Reenviar.</p>
+        <p class="Reenviar_link" onClick={this.sendData('link_verificacion')}>Reenviar.</p>
       </div>
 
     </div>
   );
+}
 }
 
 export default Link_verificacion;

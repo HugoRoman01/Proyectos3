@@ -1,9 +1,16 @@
 import React from "react";
 import '../../estilos/intro_email.css'
- 
 
-function Intro_email() {
 
+class Intro_email extends React.Component {
+
+   
+  sendData = (accion) => {
+    this.props.AppData(accion);
+  }
+
+  
+  render() {
 
   return (
     <div>
@@ -18,8 +25,13 @@ function Intro_email() {
       <div>
         <input type="mail" class="input-mail_email" placeholder="Correo electrónico"/>
       </div>
+
+      <div>
+      <h1 class="flecha_password" onClick={this.sendData('intro_contrasenia')}>→</h1>
+      </div>
     </div>
   );
+}
 }
 
 export default Intro_email;

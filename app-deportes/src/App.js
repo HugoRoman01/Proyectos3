@@ -8,7 +8,7 @@ import Link_verficacion from './componentes/Link/Link_verificacion';
 
 class App extends React.Component {
 
-  state = { page : 'home' }
+  state = { page : 'bienvenida' }
 
   callbackFunction = (data) => {
     this.setState({ page : data });
@@ -16,7 +16,7 @@ class App extends React.Component {
 
   render() {
     switch (this.state.page) {
-      case 'home':
+      case 'bienvenida':
         return ( <Bienvenida AppData={this.callbackFunction}/> );
 
       case 'login':

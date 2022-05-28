@@ -1,10 +1,16 @@
 import React from "react";
 import '../../estilos/login.css'
- 
 
 
-function Login() {
 
+
+
+class Login extends React.Component {
+
+  sendData = (accion) => {
+    this.props.AppData(accion);
+  }
+  render() {
 
   return (
     <div>
@@ -21,11 +27,11 @@ function Login() {
         <input type="mail" id="input2_login" class="input-contra_login" placeholder="Contraseña"/>
       </div>
 
-      <button class="boton_login">Iniciar sesión</button>
+      <button class="boton_login" onClick={this.sendData('home')}>Iniciar sesión</button>
 
       <div class="veremos_login">
         <p class="subtitulo1_login">¿No tienes cuenta todavía? </p>
-        <p class="crear-cuenta_login">Crear cuenta</p>
+        <p class="crear-cuenta_login" onClick={this.sendData('intro_mail')}>Crear cuenta</p>
       </div>
 
       <div>
@@ -34,6 +40,7 @@ function Login() {
 
     </div>
   );
+}
 }
 
 export default Login;
