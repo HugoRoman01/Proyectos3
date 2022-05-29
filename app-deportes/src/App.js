@@ -7,6 +7,7 @@ import Login from './componentes/Login/Login';
 import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
 import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
 import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
+import RegisterDescripcion from './componentes/RegisterDescripcion/RegisterDescripcion';
 import Home from './componentes/Home/Home';
 
 
@@ -148,6 +149,8 @@ class App extends React.Component {
         return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
         return ( <Home user={this.state.usuario} token={this.state.token}/> );
+      case 'register_descripcion':
+        return ( <RegisterDescripcion/> );
       default:
         return ( <h1>Cargando</h1> );
 
