@@ -61,4 +61,4 @@ class Bienvenida extends React.Component {
   
   
   
-  export default Bienvenida;
+  export default crearEvento2;
