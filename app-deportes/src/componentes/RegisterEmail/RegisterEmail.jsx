@@ -8,6 +8,8 @@ class RegisterEmail extends React.Component {
   sendDataEmail = () => {
 
     var mail = document.getElementById("input_mail_email").value;
+    var matriculacion = document.getElementsByClassName("input_matriculacion_email")[0].value
+
 
     if (mail === "") {
       alert("Introduce un correo electrónico");
@@ -16,6 +18,12 @@ class RegisterEmail extends React.Component {
       alert("Introduce un correo electrónico de la U-Tad");
       return
     }
+
+    if (matriculacion === "") {
+      alert("Introduce una matriculación");
+      return
+    }
+
     this.props.AppData("register_password", mail);
   }
 
@@ -29,11 +37,16 @@ class RegisterEmail extends React.Component {
       </div>
 
       <div>
-        <p className="subtitulo_email">Introduce el correo electrónico de U-Tad</p>
+        <p className="subtitulo_email">Introduce el correo electrónico de U-Tad y el grado que estas cursando</p>
       </div>
 
       <div>
         <input type="mail" className="input_mail_email" id="input_mail_email" placeholder="Correo electrónico"/>
+        <select className="input_matriculacion_email">
+                <option value="1">INSO</option>
+                <option value="2">DIDI</option>
+                <option value="3">ANIMACION</option>
+            </select>
       </div>
 
       <div>
