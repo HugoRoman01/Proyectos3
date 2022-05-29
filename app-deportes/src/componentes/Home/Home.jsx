@@ -1,5 +1,5 @@
-import react from "react";
-import Home from "../../estilos/home.css";
+import React from "react";
+import "../../estilos/home.css";
 
 class Home extends React.Component {
     sendDataHome = () => {
@@ -23,12 +23,12 @@ class Home extends React.Component {
         return (
             <nav >
                 <input type="checkbox" id="menu" />
-                <label for="menu" class="icono"> ☰ </label>
+                <label for="menu" className="icono"> ☰ </label>
                 <ul>
                     <li onClick={this.sendDataHome}>☎ Home</li>
                     <li onClick={this.sendDataUser}>♕ Mi Perfil</li>
                     <li onClick={this.sendDataCrear}>✚ Crear Evento</li>
-                    <li class="last" onClick={this.sendDataMisEventos}>☑ Mis Eventos</li>
+                    <li className="last" onClick={this.sendDataMisEventos}>☑ Mis Eventos</li>
                 </ul>
             </nav>
         )

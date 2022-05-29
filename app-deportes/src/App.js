@@ -4,65 +4,30 @@ import Cookies from 'universal-cookie'
 
 import Bienvenida from "./componentes/Bienvenida/Bienvenida"
 import Login from './componentes/Login/Login';
-import Cuenta_verificada from './componentes/Cuenta_verificada/Cuenta_verificada';
-import Intro_email from './componentes/Intro_mail/Intro_email';
-import Intro_contrasenia from './componentes/Intro_passwd/Intro_contrasenia';
-import Link_verficacion from './componentes/Link/Link_verificacion';
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
-
+import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
+import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
+import Link_verficacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
+import Home from './componentes/Home/Home';
 
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    
-    this.state = {
-      page:'bienvenida',
-      id:0,
-      email:"",
-      nombre:"",
-      matriculacion:"",
-      insignias:[],
-      participaciones:0,
-      eventos:[{}]};
 
     const cookie = new Cookies();
 
-    if(cookie.get('access_token')){
-      
-      var url = "http://127.0.0.1:5000/api/login/getUser/?access_token=" + cookie.get('access_token');
+    this.state = {page:'bienvenida', cookie:cookie.get('access_token')};
 
-      const axiosInstance = axios.create({
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-
-      axiosInstance.get(url)
-        .then(res => {
-
-          if(res.data.status === 'OK'){
-            var usuario = {
-              'id':res.data.id,
-              'email':res.data.email,
-              'nombre':res.data.nombre_completo,
-              'matriculacion':res.data.matriculacion,
-              'insignias':res.data.insignias,
-              'participaciones':res.data.participaciones
-            }
-
-            this.setState({
-              page: 'home',
-              usuario: usuario,
-              eventos: [{}]
-            });
-            
-          }
-        })
-    }
-
+    this.cookieLogin = this.cookieLogin.bind(this);
+  
   } 
+
+  cookieLogin(){
+    if (this.state.cookie) {
+      this.llamarAPI('getUserCookie', {}, this.state.cookie);
+    }
+  }
 
   llamarAPI(accion, parametros, token){
     var url = "http://127.0.0.1:5000/api/"
@@ -72,7 +37,7 @@ class App extends React.Component {
         url += "login/getUser?jwt=" + token;
         break;
       case 'getUserLogin':
-        url += "login/getUser?email=" + parametros.email + "&password=" + parametros.password;
+        url += "login/iniciarSesion?email=" + parametros.email + "&password=" + parametros.password;
         break;
       case 'registro':
         url += "registro/crearCuenta?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion;
@@ -93,22 +58,57 @@ class App extends React.Component {
     console.log(url);
 
     axios.get(url).then(res => {
-      console.log(res.data)
+      
+      // Para los que necesitan hacer algo con el resultado llamo a sus funciones
+      if(res.data.status === 'OK'){
+        if(accion === 'getUserCookie'){
+          this.inicioSesion(res.data, false);
+        }else if(accion === 'getUserLogin'){
+          this.inicioSesion(res.data, true);
+        }
+        
+      }
       return res.data
     })
+
+  }
+
+  inicioSesion(data, cookie){
+    
+    var usuario = {
+      'id':data.id,
+      'email':data.email,
+      'nombre':data.nombre_completo,
+      'matriculacion':data.matriculacion,
+      'insignias':data.insignias,
+      'participaciones':data.participaciones
+    }
+
+    this.setState({
+      page:'home',
+      usuario : usuario,
+      eventos: [{}]
+    })
+
+    if (cookie) {
+      const cookie = new Cookies();
+      cookie.set('access_token', data.access_token, { path: '/' }); 
+    }
 
   }
 
   callbackFunction = (data, parametros=null) => {
 
     this.setState({ page : data });
-    
+
     switch(data){
+      case 'cookieLogin':
+        this.llamarAPI('getUserCookie', {}, this.state.cookie);
+        break;
       case 'register_password':
         this.setState({ email: parametros });
-        console.log("Email puesto! -> " + this.state.email)
-
         break;
+
       case  'link_verificacion':
         let password = parametros;
         
@@ -117,41 +117,44 @@ class App extends React.Component {
 
         let matriculacion = "";
 
-        let query = this.llamarAPI('registro', {'nombre_completo':nombre_completo, 'email':this.state.email, 'password':password, 'matriculacion':matriculacion});
-
-        console.log(query);
+        this.llamarAPI('registro', {'nombre_completo':nombre_completo, 'email':this.state.email, 'password':password, 'matriculacion':matriculacion});
 
         break;
 
-        //crearCuenta(this.state.user.email, password);
+      case 'enviar_login':
+
+        this.llamarAPI('getUserLogin', {'email':parametros.email, 'password':parametros.password});
+
+        break;
+
+      default:
+        console.log("Error")
 
     }
 
   }
 
   render() {
-
+    this.state.page = 'bienvenida';
     switch (this.state.page) {
       case 'bienvenida':
-        return ( <Bienvenida AppData={this.callbackFunction}/> );
+        return ( <Bienvenida AppData={this.callbackFunction} onLoad={this.cookieLogin}/> );
 
       case 'login':
         return ( <Login AppData={this.callbackFunction}/> );
 
-      case 'verificada':
-        return ( <Cuenta_verificada AppData={this.callbackFunction}/> );
-
       case 'register_email':
-        return ( <Intro_email AppData={this.callbackFunction}/> );
+        return ( <RegisterEmail AppData={this.callbackFunction}/> );
 
       case 'register_password':
-        return ( <Intro_contrasenia AppData={this.callbackFunction}/> );
+        return ( <RegisterPassword AppData={this.callbackFunction}/> );
 
-      case 'link_verificacion':
+      case 'RegisterLinkVerificacion':
         return ( <Link_verficacion AppData={this.callbackFunction} email={this.state.email}/> );
-
+      case 'home':
+        return ( <Home /> );
       default:
-        return ( <h1>Error</h1> );
+        return ( <h1>Cargando</h1> );
 
     }
   }

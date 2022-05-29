@@ -6,11 +6,11 @@ from models import db, User, Integrante, Insignias
 
 login = Blueprint('login', __name__)
 
-@login.route('/', methods=['POST'])
+@login.route('/iniciarSesion', methods=['GET'])
 def ingreso():
 
-    email = request.form['email']
-    password = request.form['password']
+    email = request.args.get('email')
+    password = request.args.get('password')
 
     if email == None or password == None:
         return jsonify({'status': 'ERROR', 'message': 'Faltan parametros'})
