@@ -39,13 +39,10 @@
 
   .flecha8{
     position: absolute;
-    width: 10%;
     font-family: 'Montserrat';
-    font-style: normal;
+    font-size: 100px;
     font-weight: 600;
-    font-size: 300%;
     left: 85%;
-    top: 125%;
-    padding-bottom: 5%;
+    top: 75%;
     cursor: pointer;
   }
