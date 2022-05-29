@@ -24,20 +24,20 @@ class RegisterEmail extends React.Component {
 
   return (
     <div>
-      <div class="titulo_email">
+      <div className="titulo_email">
         <h1 >Estás a punto de formar parte de una gran<br />comunidad.</h1>
       </div>
 
       <div>
-        <p class="subtitulo_email">Introduce el correo electrónico de U-Tad</p>
+        <p className="subtitulo_email">Introduce el correo electrónico de U-Tad</p>
       </div>
 
       <div>
-        <input type="mail" class="input_mail_email" id="input_mail_email" placeholder="Correo electrónico"/>
+        <input type="mail" className="input_mail_email" id="input_mail_email" placeholder="Correo electrónico"/>
       </div>
 
       <div>
-      <h1 class="flecha_email" onClick={this.sendDataEmail}>➞</h1>
+      <h1 className="flecha_email" onClick={this.sendDataEmail}>➞</h1>
       </div>
     </div>
   );

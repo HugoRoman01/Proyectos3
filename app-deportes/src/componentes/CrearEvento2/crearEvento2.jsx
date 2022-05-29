@@ -61,4 +61,4 @@ class CrearEvento2 extends React.Component {
   
   
   
-  export default crearEvento2;
+  export default CrearEvento2;

@@ -35,7 +35,7 @@ class EventoInfo extends React.Component {
             <div>
             <div className="menuhamburguesa">
                 <nav >
-                    <input type="checkbox" id="menu" />
+                    <input type="checkbox" id="menu" className="check_eventoinfo" />
                     <label for="menu" className="icono_eventoinfo"> ☰ </label>
                     <ul>
                         <li onClick={this.sendDataHome}>☎ Home</li>

@@ -84,7 +84,7 @@ class HomePrueba extends React.Component {
             <div>
                 <div className="menuhamburguesa">
                     <nav >
-                        <input type="checkbox" id="menu" />
+                        <input type="checkbox" id="menu" className="check_homeprueba"/>
                         <label htmlFor="menu" className="icono_homeprueba"> ☰ </label>
                         <ul>
                             <li onClick={this.sendDataHome}>☎ Home</li>

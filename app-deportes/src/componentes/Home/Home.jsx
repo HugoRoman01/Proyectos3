@@ -1,6 +1,12 @@
 import axios from "axios";
 import React from "react";
 import "../../estilos/home.css";
+import HomePrueba from "./HomePrueba/HomePrueba";
+import User from "./User/User";
+import CrearEvento from "../CrearEvento/crearEvento";
+import CrearEvento2 from "../CrearEvento2/CrearEvento2";
+import CrearEvento4 from "../CrearEvento4/CrearEvento4";
+
 
 class Home extends React.Component {
 
@@ -45,20 +51,20 @@ class Home extends React.Component {
     }
     
     render() {
-        return (
-            <nav >
-                <input type="checkbox" id="menu" />
-                <label htmlFor="menu" className="icono"> ☰ </label>
-                <ul>
-                    <li onClick={this.sendDataHome}>☎ Home</li>
-                    <li onClick={this.sendDataUser}>♕ Mi Perfil</li>
-                    <li onClick={this.sendDataCrear}>✚ Crear Evento</li>
-                    <li className="last" onClick={this.sendDataMisEventos}>☑ Mis Eventos</li>
-                </ul>
-                <h1>Bienvenido, {this.state.user.nombre}</h1>
-            </nav>
-        )
+        switch (this.state.page) {
+            case "home":
+                return ( <HomePrueba/> );
+            case "usuario":
+                return ( <User/> );
+            case "crear_evento":
+                return ( <CrearEvento/> );
+            case "crear_evento2":
+                return ( <CrearEvento2/> );
+            case "crear_evento4":
+                return ( <CrearEvento4/> );
+            default:
+                return ( <HomePrueba/> );
     }   
 }
-
+}
 export default Home;
