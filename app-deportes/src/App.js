@@ -154,7 +154,7 @@ class App extends React.Component {
       case 'register_password':
         return ( <RegisterPassword AppData={this.callbackFunction}/> );
 
-      case 'RegisterLinkVerificacion':
+      case 'link_verificacion':
         return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
         return ( <Home user={this.state.usuario} token={this.state.token}/> );
