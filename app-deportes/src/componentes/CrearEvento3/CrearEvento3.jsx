@@ -4,6 +4,17 @@ import React from 'react'
 
 class CrearEvento3 extends React.Component {
 
+    sendData = () => {
+      var fecha = document.getElementById("fecha").value
+      var hora_comienzo = document.getElementById("hora_comienzo").value
+      var hora_fin = document.getElementById("hora_fin").value
+
+      this.props.data("crear_evento4", {fecha:fecha, hora_comienzo:hora_comienzo, hora_fin:hora_fin});
+
+
+    }
+
+
     render() {
       
       return (
