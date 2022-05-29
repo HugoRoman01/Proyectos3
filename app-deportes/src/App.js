@@ -9,6 +9,7 @@ import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
 import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
 import Home from './componentes/Home/Home';
 import HomePrueba from './componentes/Home/HomePrueba/HomePrueba';
+import CrearEvento from './componentes/CrearEvento/crearEvento';
 
 
 class App extends React.Component {
@@ -140,7 +141,7 @@ class App extends React.Component {
 
   render() {
 
-    switch (this.state.page) {
+    switch ('crearEvento') {
       case 'bienvenida':
         return ( <Bienvenida AppData={this.callbackFunction} onLoad={this.cookieLogin}/> );
 
@@ -159,6 +160,8 @@ class App extends React.Component {
         return ( <Home user={this.state.usuario} token={this.state.token}/> );
       case 'homeprueba':
         return ( <HomePrueba/>);
+      case 'crearEvento':
+        return ( <CrearEvento /> );
       default:
         return ( <h1>Cargando</h1> );
 

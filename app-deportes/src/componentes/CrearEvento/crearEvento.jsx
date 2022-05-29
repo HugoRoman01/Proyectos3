@@ -1,7 +1,7 @@
 import '../../estilos/crear_evento.css'
 import React from 'react'
 
-class Bienvenida extends React.Component {
+class CrearEvento extends React.Component {
 
   
   
