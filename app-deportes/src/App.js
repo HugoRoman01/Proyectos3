@@ -8,11 +8,8 @@ import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
 import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
 import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
 import Home from './componentes/Home/Home';
-<<<<<<< Updated upstream
 import HomePrueba from './componentes/Home/HomePrueba/HomePrueba';
 import CrearEvento from './componentes/CrearEvento/crearEvento';
-=======
->>>>>>> Stashed changes
 
 
 class App extends React.Component {
@@ -161,13 +158,11 @@ class App extends React.Component {
         return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
         return ( <Home user={this.state.usuario} token={this.state.token}/> );
-<<<<<<< Updated upstream
+
       case 'homeprueba':
         return ( <HomePrueba/>);
       case 'crearEvento':
         return ( <CrearEvento /> );
-=======
->>>>>>> Stashed changes
       default:
         return ( <h1>Cargando</h1> );
 
