@@ -22,7 +22,7 @@ class HomePrueba extends React.Component {
         };
 
         var evento2 = evento1;
-        evento2.nombre_evento = "Torneo 2";
+        evento2.nombre_evento = "Torneo de baloncesto";
 
         var listaEventos = [
             evento1,
