@@ -14,7 +14,9 @@ class EventoInfo extends React.Component {
             fecha_inicio: "2020-01-01",
             fecha_fin: "2020-01-02",
             hora_inicio: "12:00",
-            hora_fin: "13:00"
+            hora_fin: "13:00",
+            descipcion: "Torneo bien chingon",
+
         };
 
         switch (evento.id_deporte) {
@@ -50,7 +52,7 @@ class EventoInfo extends React.Component {
                     <div className="eventotitulo"> {evento.nombre_evento} </div>
                     <div className="eventofecha"> {evento.fecha_inicio} - {evento.fecha_fin} </div>
                 </div>
-                <div className="eventosub">Vamos a hacer un torneo entre alumnos de la U-tad, teneis mas info abajo, animaos a participar!</div>
+                <div className="eventosub">{evento.descipcion}</div>
                 <div className="eventoinfo1">
                     Creado por: {evento.id_usuario}
                     <br />
