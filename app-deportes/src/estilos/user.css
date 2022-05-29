@@ -1,0 +1,402 @@
+*{
+    font-family: 'Montserrat';
+  }
+    
+    ul{
+      display: none;
+    }
+    
+    input:checked  ~ ul{
+      display:block;
+    }
+    
+    input {
+      display: none;
+    }
+    
+    label {
+      box-sizing: border-box;
+      display: inline-block;
+      border: 1px solid #1261C9;
+      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      line-height: 30px;
+      font-weight: bold;
+      text-align: center;
+      user-select: none;
+    }
+    
+    /* Estilo del boton cuando se pasa el mouse por encima*/
+    label:hover{
+      background: whitesmoke;
+      border: 1px solid #1261C9;
+    }
+    
+    /* Estilo del boton cuando el menú está expandido*/
+    input:checked ~ label {
+      background: whitesmoke; 
+    }
+    
+    ul{
+      margin-top:0;
+      padding: 0;
+      width: 200px;
+      z-index: 1;
+      position: absolute;
+    
+    }
+    
+    
+    li {
+      display: block;
+      background: whitesmoke;
+      margin: 0;
+      padding: 10px;
+      list-style: none;
+      border-top: 1px solid #1261C9;
+      border-right: 1px solid #1261C9;
+      border-left: 1px solid #1261C9;
+    }
+    .last_user{
+      border-bottom: 1px solid #1261C9;
+      border-right: 1px solid #1261C9;
+      border-left: 1px solid #1261C9;
+      display: block;
+      background: whitesmoke;
+      margin: 0;
+      padding: 10px;
+      list-style: none; 	
+    }
+    
+    /*Estilo cuando el mouse pasa encima de cada link del menu*/
+    li:hover {
+      filter: brightness(110%);
+    }
+    
+    .icono_user{
+        color:#1261C9;
+        font-size:24px;
+        padding-top: 5px;
+    }
+
+    .userBanner{
+        z-index: 0;
+        position: absolute;
+        width: 1880px;
+        height: 246px;
+        margin-left: 1%;
+        margin-top: 2%;
+        margin-right: 1%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) -52.44%, rgba(21, 122, 255, 0.45) 80.49%), url(../imagenes/banner3.png);
+        border-radius: 14px;
+    }
+
+    .userImg{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 10px;
+
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        margin-left: 1%;
+        margin-top: 3%;
+
+        background: linear-gradient(360deg, rgba(0, 0, 0, 0.2) -49.2%, rgba(0, 0, 0, 0.130081) -32%, rgba(0, 0, 0, 0) 0%), url(../imagenes/userimg.png);
+
+        /* Shadows/Medium Shadow */
+        box-shadow: 1px 7px 6px 1px rgba(0, 0, 0, 0.12);
+        border-radius: 179px;
+    }
+
+    .userNombre{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 220px;
+        height: 48px;
+        left: 293px;
+        margin-top: 8%;
+        /* Typeface/Headline/Three/Semi Bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 39px;
+        line-height: 48px;
+
+        /* identical to box height, or 150% */
+
+        /* Bright/Full Bright */
+        color: #ffffff;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .userMatriculacion{
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 10px;
+
+        position: absolute;
+        width: 89px;
+        height: 40px;
+        left: 294px;
+        margin-top: 11%;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 29px;
+        line-height: 40px;
+
+        /* identical to box height, or 167% */
+
+        /* Bright/Full Bright */
+        color: #FFFFFF;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .userDescripcion{
+        
+        box-sizing: border-box;
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        gap: 20px;
+
+        position: absolute;
+        width: 409px;
+        height: 308px;
+        left: 117px;
+        margin-top: 21%;
+        /* Bright/Full Bright */
+        background: #FFFFFF;
+
+        /* Crayola */
+        border: 4px solid #157AFF;
+        border-radius: 80px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    .title{
+        
+        width: 165px;
+        height: 48px;
+
+        /* Typeface/Headline/Three/Semi Bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 48px;
+
+        /* identical to box height, or 150% */
+
+        /* Dark/Grand Dark */
+        color: #1F1F1F;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .userEventosCreados{
+        /* resumen eventos */
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        gap: 80px;
+
+        position: absolute;
+        width: 100px;
+        height: 518px;
+        margin-top: 29%;
+        margin-left: 12%;
+
+        /* Crayola */
+        background: #157AFF;
+        border-radius: 10px 80px 10px 10px;
+        transform: rotate(-90deg);
+    }
+
+    .title2{
+        
+        left: 50%;
+        margin-top: 90%;
+        width: 400px;
+        height: 10px;
+
+        /* Typeface/Headline/Four/Semi Bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 40px;
+
+        /* or 167% */
+
+        /* Bright/Full Bright */
+        color: #FFFFFF;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        transform: rotate(+90deg);
+    }
+
+    .userEventosAsistidos{
+                
+        /* Auto layout */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        gap: 80px;
+
+        position: absolute;
+        width: 100px;
+        height: 518px;
+        margin-top: 36%;
+        margin-left: 12%;
+
+        /* Crayola */
+        background: #157AFF;
+        border-radius: 10px 10px 10px 80px;
+        transform: rotate(-90deg);
+    }
+
+.userBox{
+    
+        position: absolute;
+        width: 750px;
+        height: 632px;
+        margin-left: 48%;
+        margin-top: 17%;
+        /* Gradient Crayola */
+        background: linear-gradient(180deg, #157AFF 0%, #FFFFFF 106.94%, rgba(102, 168, 255, 0) 106.94%);
+        border-radius: 80px 20px;
+}
+
+.userInsignias{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 44px;
+    gap: 20px;
+
+    position: absolute;
+    width: 610px;
+    height: 148px;
+    margin-left: 49.5%;
+    margin-top: 20%;
+    /* Bright/Full Bright */
+    background: #FFFFFF;
+
+    /* Shadows/ Short shadow */
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.06);
+    border-radius: 80px;
+}
+
+.title5{
+    width: 200px;
+    height: 40px;
+
+    /* Typeface/Headline/Four/Semi Bold */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+
+    /* identical to box height, or 167% */
+
+    /* Dark/Grand Dark */
+    color: #1F1F1F;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-left: 3%;
+}
+
+.usercontacto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px;
+    gap: 20px;
+
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    margin-left: 53%;
+    margin-top: 35%;
+
+    /* Bright/Full Bright */
+    background: #FFFFFF;
+
+    /* Shadows/ Short shadow */
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.06);
+    border-radius: 100px;
+}
+
+.title3{
+    width: 400px;
+    height: 40px;
+
+    /* Typeface/Headline/Four/Semi Bold */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+
+    /* identical to box height, or 167% */
+
+    /* Dark/Grand Dark */
+    color: #1F1F1F;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-left: 3%;
+}
