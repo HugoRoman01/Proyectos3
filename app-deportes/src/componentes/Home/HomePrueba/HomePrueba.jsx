@@ -7,14 +7,8 @@ class HomePrueba extends React.Component {
 
 
     render() {
-/*
-        function pulsado(boton) {
-            boton.style.background == "url(../imagenes/cambiar.png)";
-        }
 
-        function noPulsado(boton) {
-            boton.style.background == "url(../imagenes/cambiado.png)";
-        } */
+
         var evento1 = {
             id_evento: 1,
             id_usuario: 1,
@@ -26,6 +20,14 @@ class HomePrueba extends React.Component {
             hora_inicio: "12:00",
             hora_fin: "13:00"
         };
+
+        var evento2 = evento1;
+        evento2.nombre_evento = "Torneo 2";
+
+        var listaEventos = [
+            evento1,
+            evento2
+        ]
 
         switch (evento1.id_deporte) {
             case 1:
@@ -54,7 +56,7 @@ class HomePrueba extends React.Component {
 
         };
 
-        let eventos = [];
+        /* let eventos = [];
         for (let step = 0; step < 3 ; step++) {
             eventos.push(
             <div className="eventotarjeta">
@@ -63,15 +65,27 @@ class HomePrueba extends React.Component {
                 <div className="hora">{evento1.hora_inicio}</div>
             </div>
             );
-        }
-
+        } */
         
+        const eventos = listaEventos.map((evento, key) => {
+            let id_evento = "evento" + key;
+            let id_button = "button" + key; 
+            return (
+                <div className="eventotarjeta" id={id_evento}>
+                    <div className="fecha"> {evento.fecha_inicio} <button className="botonhomeprueba" id={id_button} >Unirse</button></div>
+                    <div className="nombre"> {evento.nombre_evento}:  {evento.max_participantes} participantes  </div>
+                    <div className="hora">{evento.hora_inicio}</div>
+                </div>
+            );
+        });
+
+
         return (
             <div>
                 <div className="menuhamburguesa">
                     <nav >
                         <input type="checkbox" id="menu" />
-                        <label for="menu" className="icono_homeprueba"> ☰ </label>
+                        <label htmlFor="menu" className="icono_homeprueba"> ☰ </label>
                         <ul>
                             <li onClick={this.sendDataHome}>☎ Home</li>
                             <li onClick={this.sendDataUser}>♕ Mi Perfil</li>
