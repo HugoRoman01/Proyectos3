@@ -1,0 +1,38 @@
+.titulo_crear_evento1{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0%;
+    position: absolute;
+    width:50%;
+    left: 33%;
+    top: 15%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 200%;
+    line-height: 64px;
+  }
+  
+  .input_deporte{
+    display: flex;
+    top: 40%;
+    left: 35%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 9%;
+    gap: 10px;
+    position: absolute;
+    width: 524px;
+    height: 64px;
+    border: 4px solid #157AFF;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 200%;
+  
+  }
