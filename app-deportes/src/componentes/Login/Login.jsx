@@ -16,7 +16,7 @@ class Login extends React.Component {
   }
 
   sendDataRegister = () => {
-    this.props.AppData('register_email');
+    this.props.AppData('register_descripcion');
   }
 
   render() {
