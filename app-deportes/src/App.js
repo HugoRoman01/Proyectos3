@@ -130,7 +130,7 @@ class App extends React.Component {
 
   render() {
 
-    switch ('home') {
+    switch (this.state.page) {
       case 'bienvenida':
         return ( <Bienvenida AppData={this.callbackFunction} onLoad={this.cookieLogin}/> );
 

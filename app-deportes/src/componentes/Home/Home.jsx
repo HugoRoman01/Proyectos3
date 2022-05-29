@@ -92,9 +92,9 @@ class Home extends React.Component {
     render() {
         switch (this.state.page) {
             case "home":
-                return ( <HomePrueba data={this.callbackFunction}/> );
+                return ( <HomePrueba data={this.callbackFunction} nombre={this.props.user.nombre} token={this.props.token}/> );
             case "usuario":
-                return ( <User data={this.callbackFunction}/> );
+                return ( <User data={this.callbackFunction} user={this.props.user}/> );
             case "crear_evento":
                 return ( <CrearEvento data={this.callbackFunction}/> );
             case "crear_evento2":

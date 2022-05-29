@@ -1,10 +1,6 @@
 import React from "react";
 import '../../estilos/login.css'
 
-
-
-
-
 class Login extends React.Component {
 
   sendDataLogin = () => {
@@ -37,7 +33,7 @@ class Login extends React.Component {
         </div>
 
         <div>
-          <input type="mail" id="input2_login" class="input-contra_login" placeholder="Contraseña"/>
+          <input type="password" id="input2_login" class="input-contra_login" placeholder="Contraseña"/>
         </div>
 
         <button class="boton_login" onClick={this.sendDataLogin}>Iniciar sesión</button>

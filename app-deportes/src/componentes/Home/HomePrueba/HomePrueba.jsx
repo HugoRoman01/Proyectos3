@@ -100,7 +100,7 @@ class HomePrueba extends React.Component {
                         </ul>
                     </nav>
                 </div>
-                <div className="name"> ¡Hola, {user.nombre} !</div>
+                <div className="name"> ¡Hola, {this.props.nombre} !</div>
                 <div className="texto"> Estos eventos podrian interesarte: </div>
                 {eventos}
 

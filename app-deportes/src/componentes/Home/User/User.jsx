@@ -52,8 +52,8 @@ class User extends React.Component {
             </div>
             <div className="userBanner">
                 <div className="userImg"> </div>
-                <div className="userNombre"> {user.nombre} </div>
-                <div className="userMatriculacion"> {user.matriculacion} </div>
+                <div className="userNombre"> {this.props.user.nombre} </div>
+                <div className="userMatriculacion"> {this.props.user.matriculacion} </div>
             </div>
             <div className="userDescripcion">
                 <p className="title">ABOUT ME: </p>
@@ -64,15 +64,15 @@ class User extends React.Component {
                 <p className="title2">EVENTOS CREADOS:    {user.eventos_creados}</p>
             </div>
             <div className="userEventosAsistidos">
-                <p className="title2">EVENTOS ASISTIDOS: {user.eventos_asistidos}</p>
+                <p className="title2">EVENTOS ASISTIDOS: {this.props.user.participaciones}</p>
             </div>
             <div className="userBox"></div>
             <div className="userInsignias"> 
-               <p className="title5"> Insignias: {user.insignias} </p>
+               <p className="title5"> Insignias: {this.props.user.insignias} </p>
             </div>
             <div className="usercontacto"> 
-                <p className="title3"> CONTACTO: {user.mail} </p>
-                <p className="title3">Estudiante de: {user.matriculacion} </p>
+                <p className="title3"> CONTACTO: {this.props.user.email} </p>
+                <p className="title3">Estudiante de: {this.props.user.matriculacion} </p>
             </div>
 
             </div>
