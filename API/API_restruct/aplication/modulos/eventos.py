@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import db, Evento, Integrante
+from models import db, Evento, Integrante, User
 from datetime import datetime, timedelta
 
 
@@ -12,8 +12,10 @@ def getEventos():
     
     data = []
     
+    username = getUsernameCreador(query.first().id_usuario)
+
     for evento in query:
-        data.append({'id_evento': evento.id_evento, 'id_usuario': evento.id_usuario, 'id_deporte': evento.id_deporte, 'max_participantes': evento.max_participantes, 'nombre_evento': evento.nombre_evento, 'descripcion_evento': evento.descripcion_evento, 'fecha_inicio': evento.fecha_inicio, 'fecha_fin': evento.fecha_fin, 'hora_inicio': str(evento.hora_inicio), 'hora_fin': str(evento.hora_fin)})
+        data.append({'id_evento': evento.id_evento, 'user_creador': username, 'id_deporte': evento.id_deporte, 'max_participantes': evento.max_participantes, 'nombre_evento': evento.nombre_evento, 'descripcion_evento': evento.descripcion_evento, 'fecha_inicio': evento.fecha_inicio, 'fecha_fin': evento.fecha_fin, 'hora_inicio': str(evento.hora_inicio), 'hora_fin': str(evento.hora_fin)})
 
     respuesta = jsonify(data)
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
@@ -123,3 +125,8 @@ def comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, ho
         return True
     else:
         return False
+
+
+def getUsernameCreador(user_id):
+    query = db.session.query(Usuario).filter_by(id_usuario=user_id)
+    return query.first().username

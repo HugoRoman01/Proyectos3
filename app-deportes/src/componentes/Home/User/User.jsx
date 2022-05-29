@@ -1,6 +1,11 @@
 import React from "react";
 import  '../../../estilos/user.css';
-
+import velocista_0 from "../../../imagenes/velocista_0.png";
+import velocista_1 from "../../../imagenes/velocista_0.png";
+import inbatible_0 from "../../../imagenes/velocista_0.png";
+import inbatible_1 from "../../../imagenes/velocista_0.png";
+import estratega_0 from "../../../imagenes/velocista_0.png";
+import estratega_1 from "../../../imagenes/velocista_0.png";
 
 class User extends React.Component {
     
@@ -33,6 +38,26 @@ class User extends React.Component {
             mail: "prueba@gmail.com"
 
         };
+
+        var insignias = []
+
+        if(user.insignias[0] == 1){
+            insignias[0] = velocista_0;
+        }else{
+            insignias[0] = velocista_1;
+        }
+
+        if(user.insignias[1] == 1){
+            insignias[1] = inbatible_1;
+        }else{
+            insignias[1] = inbatible_0;
+        }
+
+        if(user.insignias[2] == 1){
+            insignias[2] = estratega_1;
+        }else{
+            insignias[2] = estratega_0;
+        }
 
     
         return (
@@ -68,7 +93,20 @@ class User extends React.Component {
             </div>
             <div className="userBox"></div>
             <div className="userInsignias"> 
-               <p className="title5"> Insignias: {this.props.user.insignias} </p>
+               <p className="title5"> Insignias:</p>
+               <div>
+                    <img className="insignia" src={insignias[0]} alt="velocista"/>
+                    <p>Velocista</p>
+               </div>
+               <div>
+                    <img className="insignia" src={insignias[1]} alt="inbatible"/>
+                    <p>Velocista</p>
+               </div>
+               <div>
+                    <img className="insignia" src={insignias[2]} alt="estratega"/>
+                    <p>Velocista</p>
+               </div>
+               
             </div>
             <div className="usercontacto"> 
                 <p className="title3"> CONTACTO: {this.props.user.email} </p>

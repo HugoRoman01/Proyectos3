@@ -7,6 +7,7 @@ import CrearEvento from "../CrearEvento/CrearEvento";
 import CrearEvento2 from "../CrearEvento2/CrearEvento2";
 import CrearEvento3 from "../CrearEvento3/CrearEvento3";
 import CrearEvento4 from "../CrearEvento4/CrearEvento4";
+import EventoInfo from "./EventoInfo/EventoInfo";
 
 
 class Home extends React.Component {
@@ -71,6 +72,14 @@ class Home extends React.Component {
                 eventos: this.state.eventos,
                 page: "crear_evento4"
             })
+        }else if(data === "evento_info"){
+            this.setState({
+                user: this.state.user,
+                token: this.state.token,
+                eventos: this.state.eventos,
+                page: "evento_info",
+                evento: parametros
+            })
         }
     }
 
@@ -92,7 +101,7 @@ class Home extends React.Component {
     render() {
         switch (this.state.page) {
             case "home":
-                return ( <HomePrueba data={this.callbackFunction} nombre={this.props.user.nombre} token={this.props.token}/> );
+                return ( <HomePrueba data={this.callbackFunction} eventos={this.state.eventos} nombre={this.props.user.nombre} token={this.props.token}/> );
             case "usuario":
                 return ( <User data={this.callbackFunction} user={this.props.user}/> );
             case "crear_evento":
@@ -103,6 +112,8 @@ class Home extends React.Component {
                 return ( <CrearEvento3 data={this.callbackFunction}/> );
             case "crear_evento4":
                 return ( <CrearEvento4 data={this.callbackFunction}/> );
+            case "evento_info":
+                return (<EventoInfo data={this.callbackFunction} evento={this.state.evento}/>)
             default:
                 return ( <HomePrueba data={this.callbackFunction}/> );
         }   

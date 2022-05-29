@@ -72,7 +72,8 @@ class App extends React.Component {
       'nombre':data.nombre_completo,
       'matriculacion':data.matriculacion,
       'insignias':data.insignias,
-      'participaciones':data.participaciones
+      'participaciones':data.participaciones,
+      'eventos_creados':data.eventos_creados
     }
 
     const cookies = new Cookies();

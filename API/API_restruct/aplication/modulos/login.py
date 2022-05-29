@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from security import VerificarPassword
-from models import db, User, Integrante, Insignias
+from models import db, User, Integrante, Insignias, Evento
 
 
 login = Blueprint('login', __name__)
@@ -65,8 +65,9 @@ def getTokenUser(user_id):
 
     participaciones = getParticipaciones(user.id)
     insignias = getInsignias(user.id)
+    eventos_creados = getEventosCreados(user.id)
 
-    data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'participaciones': participaciones, 'insignias': insignias}
+    data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'participaciones': participaciones, 'insignias': insignias, 'eventos_creados': eventos_creados}
     return data
 
 def getUser(email, password):
@@ -97,3 +98,7 @@ def getInsignias(user_id):
     for insignia in query:
         data.append(insignia.id_insignia)
     return data
+
+def getEventosCreados(user_id):
+    query = db.session.query(Evento).filter_by(id_usuario=user_id).count()
+    return query
