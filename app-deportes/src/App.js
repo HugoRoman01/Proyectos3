@@ -6,7 +6,7 @@ import Bienvenida from "./componentes/Bienvenida/Bienvenida"
 import Login from './componentes/Login/Login';
 import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
 import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
-import Link_verficacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
+import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
 import Home from './componentes/Home/Home';
 
 
@@ -84,16 +84,19 @@ class App extends React.Component {
       'participaciones':data.participaciones
     }
 
+    const cookies = new Cookies();
+
+    if (cookie) {
+      cookies.set('access_token', data.access_token, { path: '/' }); 
+    }
+
     this.setState({
       page:'home',
       usuario : usuario,
-      eventos: [{}]
+      token: cookies.get('access_token')
     })
 
-    if (cookie) {
-      const cookie = new Cookies();
-      cookie.set('access_token', data.access_token, { path: '/' }); 
-    }
+    
 
   }
 
@@ -150,9 +153,9 @@ class App extends React.Component {
         return ( <RegisterPassword AppData={this.callbackFunction}/> );
 
       case 'RegisterLinkVerificacion':
-        return ( <Link_verficacion AppData={this.callbackFunction} email={this.state.email}/> );
+        return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
-        return ( <Home /> );
+        return ( <Home user={this.state.usuario} token={this.state.token}/> );
       default:
         return ( <h1>Cargando</h1> );
 
