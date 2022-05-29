@@ -6,7 +6,22 @@ import '../../estilos/intro_contrasenia.css'
 class Intro_contrasenia extends React.Component {
 
   sendDataLink = () => {
-    this.props.AppData('link_verificacion');
+
+    var pass1 = document.getElementById("input1_password").value;
+    var pass2 = document.getElementById("input2_password").value;
+    
+    if (pass1 === "" || pass2 === "") {
+      alert("Introduce las dos contraseñas");
+      return
+    }else if (pass1.length < 8 || pass1.length > 10) {
+      alert("Introduce una contraseña de 8-10 dígitos");
+      return
+    }else if (pass1 !== pass2) {
+      alert("Las contraseñas no coinciden");
+      return
+    }
+
+    this.props.AppData('link_verificacion', pass1);
   }
 
   render() {

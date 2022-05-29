@@ -8,28 +8,38 @@ import Cuenta_verificada from './componentes/Cuenta_verificada/Cuenta_verificada
 import Intro_email from './componentes/Intro_mail/Intro_email';
 import Intro_contrasenia from './componentes/Intro_passwd/Intro_contrasenia';
 import Link_verficacion from './componentes/Link/Link_verificacion';
+import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
-function getUserCookie(app){
-  app.setState({page:'login'});
-}
+
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     
-    this.state = {page:'bienvenida', user:{}, eventos:[{}]};
+    this.state = {
+      page:'bienvenida',
+      id:0,
+      email:"",
+      nombre:"",
+      matriculacion:"",
+      insignias:[],
+      participaciones:0,
+      eventos:[{}]};
 
-    this.getEventos = this.getEventos.bind(this);
-    this.getUsuario = this.getUsuario.bind(this);
-    
     const cookie = new Cookies();
 
     if(cookie.get('access_token')){
       
       var url = "http://127.0.0.1:5000/api/login/getUser/?access_token=" + cookie.get('access_token');
 
-      axios.get(url)
+      const axiosInstance = axios.create({
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      });
+
+      axiosInstance.get(url)
         .then(res => {
 
           if(res.data.status === 'OK'){
@@ -45,14 +55,12 @@ class App extends React.Component {
             this.setState({
               page: 'home',
               usuario: usuario,
-              eventos: this.getEventos()
+              eventos: [{}]
             });
             
           }
         })
     }
-
-
 
   } 
 
@@ -67,7 +75,7 @@ class App extends React.Component {
         url += "login/getUser?email=" + parametros.email + "&password=" + parametros.password;
         break;
       case 'registro':
-        url += "registro?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion;
+        url += "registro/crearCuenta?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion;
         break;
       case 'getEventos':
         url += "eventos/getEventos";
@@ -85,24 +93,38 @@ class App extends React.Component {
     console.log(url);
 
     axios.get(url).then(res => {
-      return res
+      console.log(res.data)
+      return res.data
     })
 
   }
 
-  getUsuario(email, password){
-    console.log(this.llamarAPI('getEventos', null, null));
-  }
+  callbackFunction = (data, parametros=null) => {
 
-  getEventos(){
-    return [{nombre:'Evento 1'},{nombre:'Evento 2'}];
-  }
-
-  callbackFunction = (data) => {
     this.setState({ page : data });
     
-    if (data === 'enviar_login'){
-      this.getUsuario('email', 'password');
+    switch(data){
+      case 'register_password':
+        this.setState({ email: parametros });
+        console.log("Email puesto! -> " + this.state.email)
+
+        break;
+      case  'link_verificacion':
+        let password = parametros;
+        
+        let nombre = this.state.email.split('@')[0].split('.');
+        let nombre_completo = nombre[0] + " " + nombre[1];
+
+        let matriculacion = "";
+
+        let query = this.llamarAPI('registro', {'nombre_completo':nombre_completo, 'email':this.state.email, 'password':password, 'matriculacion':matriculacion});
+
+        console.log(query);
+
+        break;
+
+        //crearCuenta(this.state.user.email, password);
+
     }
 
   }
@@ -126,7 +148,7 @@ class App extends React.Component {
         return ( <Intro_contrasenia AppData={this.callbackFunction}/> );
 
       case 'link_verificacion':
-        return ( <Link_verficacion AppData={this.callbackFunction}/> );
+        return ( <Link_verficacion AppData={this.callbackFunction} email={this.state.email}/> );
 
       default:
         return ( <h1>Error</h1> );

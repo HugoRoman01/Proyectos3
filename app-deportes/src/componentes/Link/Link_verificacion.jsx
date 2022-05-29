@@ -20,7 +20,7 @@ sendData = () => {
       </div>
 
       <div>
-        <p class="subtitulo_link">textodeprueba@live.u-tad.com</p>
+        <p class="subtitulo_link">{this.props.email}</p>
       </div>
 
       <div class="conjunto_link">

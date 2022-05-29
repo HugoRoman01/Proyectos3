@@ -5,8 +5,18 @@ import '../../estilos/intro_email.css'
 class Intro_email extends React.Component {
 
    
-  sendDataPassword = () => {
-    this.props.AppData("register_password");
+  sendDataEmail = () => {
+
+    var mail = document.getElementById("input_mail_email").value;
+
+    if (mail === "") {
+      alert("Introduce un correo electrónico");
+      return
+    }else if (!mail.includes("@live.u-tad.com") && (!mail.includes("@u-tad.com"))) {
+      alert("Introduce un correo electrónico de la U-Tad");
+      return
+    }
+    this.props.AppData("register_password", mail);
   }
 
   
@@ -23,11 +33,11 @@ class Intro_email extends React.Component {
       </div>
 
       <div>
-        <input type="mail" class="input-mail_email" placeholder="Correo electrónico"/>
+        <input type="mail" class="input_mail_email" id="input_mail_email" placeholder="Correo electrónico"/>
       </div>
 
       <div>
-      <h1 class="flecha_email" onClick={this.sendDataPassword}>➞</h1>
+      <h1 class="flecha_email" onClick={this.sendDataEmail}>➞</h1>
       </div>
     </div>
   );
