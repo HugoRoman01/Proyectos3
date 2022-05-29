@@ -11,16 +11,17 @@ class CrearEvento extends React.Component {
 
         <div>
 
-            <div class="titulo_crear_evento1">
+            <div className="titulo_crear_evento1">
                 <h1 >¿A qué quieres jugar?</h1>
             </div>
     
-            <select class="input_deporte">
+            <select className="input_deporte">
                 <option value="Baloncesto">Baloncesto</option>
                 <option value="Fútbol">Fútbol</option>
                 <option value="Pádel">Pádel</option>
             </select>
-  
+
+            <h1 className="flecha8">→</h1>
   
   
         </div>

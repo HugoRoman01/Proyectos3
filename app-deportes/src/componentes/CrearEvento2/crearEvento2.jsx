@@ -1,7 +1,7 @@
 import '../../estilos/crear_evento2.css'
 import React from 'react'
 
-class Bienvenida extends React.Component {
+class CrearEvento2 extends React.Component {
 
   
   
@@ -48,8 +48,8 @@ class Bienvenida extends React.Component {
             </div>
 
             <div className="flechas">
-                <h1 class="flecha5">→</h1>
-                <h1 class="flecha6">←</h1>
+                <h1 className="flecha5">→</h1>
+                <h1 className="flecha6">←</h1>
             </div>
   
   

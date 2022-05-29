@@ -36,3 +36,16 @@
     font-size: 200%;
   
   }
+
+  .flecha8{
+    position: absolute;
+    width: 10%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 300%;
+    left: 85%;
+    top: 125%;
+    padding-bottom: 5%;
+    cursor: pointer;
+  }

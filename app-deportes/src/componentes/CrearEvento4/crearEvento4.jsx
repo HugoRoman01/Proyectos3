@@ -1,10 +1,8 @@
 import '../../estilos/crear_evento4.css'
 import React from 'react'
 
-class Bienvenida extends React.Component {
+class CrearEvento4 extends React.Component {
 
-  
-  
     render() {
       
       return (
