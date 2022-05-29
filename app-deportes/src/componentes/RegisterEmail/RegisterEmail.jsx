@@ -2,7 +2,7 @@ import React from "react";
 import '../../estilos/intro_email.css'
 
 
-class Intro_email extends React.Component {
+class RegisterEmail extends React.Component {
 
    
   sendDataEmail = () => {
@@ -44,4 +44,4 @@ class Intro_email extends React.Component {
 }
 }
 
-export default Intro_email;
+export default RegisterEmail;

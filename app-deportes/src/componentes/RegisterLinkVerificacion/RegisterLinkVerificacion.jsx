@@ -3,7 +3,7 @@ import '../../estilos/link_verificacion.css'
 
 
  
-class Link_verificacion extends React.Component {
+class RegisterLinkVerificacion extends React.Component {
 
   
 sendData = () => {
@@ -33,4 +33,4 @@ sendData = () => {
 }
 }
 
-export default Link_verificacion;
+export default RegisterLinkVerificacion;

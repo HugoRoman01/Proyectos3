@@ -1,7 +1,19 @@
 import '../../estilos/bienvenida.css'
 import React from 'react'
+import Cookies from 'universal-cookie'
 
 class Bienvenida extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.sendData = this.sendData.bind(this);
+
+    const cookie = new Cookies();
+    if (cookie.get('access_token')){
+      this.props.AppData('cookieLogin');
+    }
+  }
+
 
   sendData = () => {
     this.props.AppData("login");
@@ -12,18 +24,18 @@ class Bienvenida extends React.Component {
     return (
     <div>
 
-      <div class="titulo_bienvenida">
+      <div className="titulo_bienvenida">
         <h1 >¡Bienvenido/a!</h1>
       </div>
 
       <div>
-        <p class="subtitulo_bienvenida"> La comunidad deportiva de U-Tad, donde podrás crear torneos y participar en eventos deportivos creados por los alumnos del centro.</p>
+        <p className="subtitulo_bienvenida"> La comunidad deportiva de U-Tad, donde podrás crear torneos y participar en eventos deportivos creados por los alumnos del centro.</p>
       </div>
 
-      <button class="boton_bienvenida" onClick={this.sendData}> <p class="txt_button_bienvenida">Acceder ahora</p> </button>
+      <button className="boton_bienvenida" onClick={this.sendData}> <p className="txt_button_bienvenida">Acceder ahora</p> </button>
 
-      <div class="imagen2-div_bienvenida"></div>
-      <div class="imagen1-div_bienvenida"></div>
+      <div className="imagen2-div_bienvenida"></div>
+      <div className="imagen1-div_bienvenida"></div>
     </div>
     )
   }

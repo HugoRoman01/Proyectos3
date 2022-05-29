@@ -3,7 +3,7 @@ import '../../estilos/intro_contrasenia.css'
  
 
 
-class Intro_contrasenia extends React.Component {
+class RegisterPassword extends React.Component {
 
   sendDataLink = () => {
 
@@ -53,4 +53,4 @@ class Intro_contrasenia extends React.Component {
   }
 }
 
-export default Intro_contrasenia;
+export default RegisterPassword;
