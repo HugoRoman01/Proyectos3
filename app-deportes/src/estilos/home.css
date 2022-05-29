@@ -11,9 +11,7 @@
     display:block;
   }
   
-  input {
-    display: none;
-  }
+
   
   label {
     box-sizing: border-box;
