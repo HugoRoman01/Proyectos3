@@ -16,7 +16,7 @@ class Bienvenida extends React.Component {
 
 
   sendData = () => {
-    this.props.AppData("homeprueba");
+    this.props.AppData("login");
   }
 
   render() {

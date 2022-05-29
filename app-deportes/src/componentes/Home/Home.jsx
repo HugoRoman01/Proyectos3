@@ -9,7 +9,8 @@ class Home extends React.Component {
         this.state = {
             user: this.props.user,
             token: this.props.token,
-            eventos: []
+            eventos: [],
+            page: "home"
         }
     }
 
