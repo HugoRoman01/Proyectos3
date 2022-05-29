@@ -8,6 +8,7 @@ import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
 import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
 import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
 import Home from './componentes/Home/Home';
+import EventoInfo from './componentes/Home/EventoInfo/Eventoinfo';
 
 
 class App extends React.Component {

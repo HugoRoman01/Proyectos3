@@ -57,7 +57,7 @@
       border-right: 1px solid #1261C9;
       border-left: 1px solid #1261C9;
     }
-    .last{
+    .last_eventoinfo{
       border-bottom: 1px solid #1261C9;
       border-right: 1px solid #1261C9;
       border-left: 1px solid #1261C9;
@@ -73,8 +73,224 @@
       filter: brightness(110%);
     }
     
-    .icono{
+    .icono_eventoinfo{
         color:#1261C9;
         font-size:24px;
         padding-top: 5px;
     }
+
+    .eventobanner{
+        position: absolute;
+        width: 1400px;
+        height: 246px;
+        left: 12%;
+        top: 6%;
+        
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0) -3.34%, #157AFF 80%), url(../imagenes/banner.jpg);
+        border-radius: 14px;
+    }
+
+    .eventotitulo{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 434px;
+        height: 64px;
+        left: 76px;
+        top: 280px;
+
+        /* Typeface/Headline/One/Semi Bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 64px;
+        top: 40%;
+
+        /* identical to box height, or 133% */
+
+        /* Bright/Full Bright */
+        color: #FFFFFF;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .eventofecha{
+       /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 10px;
+
+        position: absolute;
+        width: 474px;
+        height: 40px;
+        left: 86px;
+        top: 64%;
+
+
+
+        /* Typeface/Headline/Four/Regular */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 40px;
+
+        /* identical to box height, or 167% */
+
+        /* Bright/Grand Bright */
+        color: #F0F0F0;
+    }
+
+    .eventosub{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 20px 0px 8px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 838px;
+        height: 80px;
+        top: 35%;
+        left: 12%;
+
+        /* Typeface/Headline/Four/Semi Bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 40px;
+
+        /* or 167% */
+
+        /* Dark/Grand Dark */
+        color: #1F1F1F;
+
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .eventoinfo1{
+        /* Frame 11 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 42px;
+    gap: 24px;
+
+    position: absolute;
+    width: 598px;
+    height: 268px;
+    left: 13%;
+    top: 50%;
+
+    /* Bright/Full Bright */
+    background: #FFFFFF;
+
+    /* Shadows/ Short shadow */
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.06);
+    border-radius: 100px;
+    border: 4px solid #1261C9;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    }
+
+    .eventoinfo2{
+        /* Frame 11 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 42px;
+    gap: 24px;
+
+    position: absolute;
+    width: 598px;
+    height: 268px;
+    right: 17%;
+    top: 50%;
+
+    /* Bright/Full Bright */
+    background: #FFFFFF;
+
+    /* Shadows/ Short shadow */
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.06);
+    border-radius: 100px;
+    border: 4px solid #1261C9; ;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    }
+
+    
+.linea1{
+        /* Line 1 */
+
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 100%;
+
+    /* Crayola */
+    border: 1px solid #157AFF;
+    
+}
+
+.botonunirse{
+    
+    position: absolute;
+    width: 286px;
+    height: 52px;
+    left: 40%;
+    top: 86%;
+
+    /* Crayola */
+    background: #157AFF;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    color:white;
+}
+
+.all{
+    border: 4px solid #1261C9;
+    height: 808px;
+    width: 1430px;
+    margin-left: 210px;
+}
+ 
