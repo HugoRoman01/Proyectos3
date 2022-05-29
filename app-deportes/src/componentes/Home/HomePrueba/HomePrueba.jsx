@@ -4,6 +4,22 @@ import '../../../estilos/homeprueba.css';
 
 class HomePrueba extends React.Component {
     
+    sendDataHome = () => {
+        this.props.data("home")
+    }
+
+    sendDataUser = () => {
+        this.props.data("usuario")
+    }
+
+    sendDataCrear = () => {
+        this.props.data("crear_evento")
+    }
+
+    sendDataMisEventos = () => {
+        this.props.data("mis_eventos")
+    }
+
 
 
     render() {
@@ -56,22 +72,12 @@ class HomePrueba extends React.Component {
 
         };
 
-        /* let eventos = [];
-        for (let step = 0; step < 3 ; step++) {
-            eventos.push(
-            <div className="eventotarjeta">
-                <div className="fecha"> {evento1.fecha_inicio} <button className="botonhomeprueba" >Unirse</button></div>
-                <div className="nombre"> {evento1.nombre_evento}:  {evento1.max_participantes} participantes  </div>
-                <div className="hora">{evento1.hora_inicio}</div>
-            </div>
-            );
-        } */
         
         const eventos = listaEventos.map((evento, key) => {
-            let id_evento = "evento" + key;
-            let id_button = "button" + key; 
+            let id_evento = "evento-" + key;
+            let id_button = "button-dayamon12500@gmail.com" + key; 
             return (
-                <div className="eventotarjeta" id={id_evento}>
+                <div className="eventotarjeta" id={id_evento} key={id_evento}>
                     <div className="fecha"> {evento.fecha_inicio} <button className="botonhomeprueba" id={id_button} >Unirse</button></div>
                     <div className="nombre"> {evento.nombre_evento}:  {evento.max_participantes} participantes  </div>
                     <div className="hora">{evento.hora_inicio}</div>

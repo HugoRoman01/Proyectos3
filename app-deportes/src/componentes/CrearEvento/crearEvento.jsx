@@ -3,7 +3,10 @@ import React from 'react'
 
 class CrearEvento extends React.Component {
 
-  
+    sendData = () => {
+      var id_deporte = document.getElementsByClassName("input_deporte")[0].value
+      this.props.data("crear_evento2", id_deporte);
+    }
   
     render() {
       
@@ -16,19 +19,19 @@ class CrearEvento extends React.Component {
             </div>
     
             <select className="input_deporte">
-                <option value="Baloncesto">Baloncesto</option>
-                <option value="Fútbol">Fútbol</option>
-                <option value="Pádel">Pádel</option>
+                <option value="1">Baloncesto</option>
+                <option value="2">Fútbol</option>
+                <option value="3">Pádel</option>
             </select>
 
-            <h1 className="flecha8">→</h1>
+            <h1 className="flecha8" onClick={this.sendData}>→</h1>
   
   
         </div>
       )
     }
   
-  }
+}
   
   
   

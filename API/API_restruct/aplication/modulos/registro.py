@@ -6,17 +6,17 @@ registro = Blueprint('registro', __name__)
 
 @registro.route('/crearCuenta' , methods=['GET'])
 def register():
-    print("Llego")
+
     nombre_completo = request.args.get('nombre_completo')
     email = request.args.get('email')
     password = request.args.get('password')
     matriculacion = request.args.get('matriculacion')
     
-    print("Llego2")
+
     if nombre_completo == None or email == None or password == None or matriculacion == None:
         respuesta = jsonify({'status': 'ERROR', 'message': 'Faltan parametros'})
         respuesta.headers.add('Access-Control-Allow-Origin', '*')
-        print("Llego3")
+
         return jsonify(respuesta)
 
     usuario = registrar(nombre_completo, email, password, matriculacion)
@@ -27,7 +27,7 @@ def register():
         respuesta = jsonify({'status':'ERROR', 'message': 'Usuario ya existe'})
 
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    print("Llego4")
+
     return respuesta
 
 @registro.route('/confirmar', methods=['GET'])

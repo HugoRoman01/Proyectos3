@@ -4,6 +4,23 @@ import  '../../../estilos/user.css';
 
 class User extends React.Component {
     
+    sendDataHome = () => {
+        this.props.data("home")
+    }
+
+    sendDataUser = () => {
+        this.props.data("usuario")
+    }
+
+    sendDataCrear = () => {
+        this.props.data("crear_evento")
+    }
+
+    sendDataMisEventos = () => {
+        this.props.data("mis_eventos")
+    }
+
+
     render() {
         var user = {
             id_usuario: 1,

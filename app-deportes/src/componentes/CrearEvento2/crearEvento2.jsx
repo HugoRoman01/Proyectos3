@@ -3,6 +3,29 @@ import React from 'react'
 
 class CrearEvento2 extends React.Component {
 
+    sendDataBack = () => {
+        this.props.data("crear_evento")
+    }
+
+    sendData = () => {
+        
+        var nombre_evento = document.getElementById("input3").value
+        var descripcion = document.getElementById("input4").value
+        var numero_jugadores = document.getElementById("input5").value
+
+        if (nombre_evento === "" || numero_jugadores === "") {
+            alert("Rellena todos los campos")
+            return
+        }
+
+        if (numero_jugadores > 20) {
+            alert("El número de jugadores no puede ser mayor de 20")
+            return
+        }
+
+        this.props.data("crear_evento3", {nombre_evento: nombre_evento, descripcion: descripcion, numero_jugadores: numero_jugadores});
+
+    }
   
   
     render() {
@@ -37,19 +60,9 @@ class CrearEvento2 extends React.Component {
                 <input id="input5" className="input-actividad" placeholder="1, 2, 10 ..."/>
             </div>
 
-
-            <div className="bloque4">
-
-                <h1 id="titulo4">¿A qué grado o ciclo formativo pertenecéis?</h1>
-                <p className="subtitulo4">No es obligatorio, pero siempre viene bien un poco más de información.</p>
-
-                <input id="input6" className="input-actividad" placeholder="DIDI, ISO ..."/>
-
-            </div>
-
             <div className="flechas">
-                <h1 className="flecha5">→</h1>
-                <h1 className="flecha6">←</h1>
+                <h1 className="flecha5" onClick={this.sendData}>→</h1>
+                <h1 className="flecha6" onClick={this.sendDataBack}>←</h1>
             </div>
   
   

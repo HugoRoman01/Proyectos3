@@ -8,8 +8,6 @@ import RegisterEmail from './componentes/RegisterEmail/RegisterEmail';
 import RegisterPassword from './componentes/RegisterPassword/RegisterPassword';
 import RegisterLinkVerificacion from './componentes/RegisterLinkVerificacion/RegisterLinkVerificacion';
 import Home from './componentes/Home/Home';
-import HomePrueba from './componentes/Home/HomePrueba/HomePrueba';
-import CrearEvento from './componentes/CrearEvento/crearEvento';
 
 
 class App extends React.Component {
@@ -43,15 +41,6 @@ class App extends React.Component {
         break;
       case 'registro':
         url += "registro/crearCuenta?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion;
-        break;
-      case 'getEventos':
-        url += "eventos/getEventos";
-        break;
-      case 'inscribir':
-        url += "eventos/inscribir?jwt=" + token + "&id_evento=" + parametros.evento;
-        break;
-      case 'crearEvento':
-        url += "eventos/crearEvento?jwt=" + token + "id_deporte=" + parametros.deporte + "&max_participantes=" + parametros.max_participantes + "&nombre_evento=" + parametros.nombre_evento + "&descripcion_evento=" + parametros.descripcion_evento + "&fecha_inicio=" + parametros.fecha_inicio + "&fecha_fin=" + parametros.fecha_fin + "&hora_inicio=" + parametros.hora_inicio + "&hora_fin=" + parametros.hora_fin;
         break;
       default:
         return null;
@@ -158,10 +147,6 @@ class App extends React.Component {
         return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
         return ( <Home user={this.state.usuario} token={this.state.token}/> );
-      case 'homeprueba':
-        return ( <HomePrueba/>);
-      case 'crearEvento':
-        return ( <CrearEvento /> );
       default:
         return ( <h1>Cargando</h1> );
 
