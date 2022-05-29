@@ -1,7 +1,35 @@
+import axios from "axios";
 import React from "react";
 import "../../estilos/home.css";
 
+var usuairo;
+var token;
+
 class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        // llamo a la API para obtener los eventos que hay creados
+        let url = "http://localhost:8080/api/eventos/getEventos";
+           
+        axios.get(url).then(response => {
+            
+            this.state = {
+                user: props.user,
+                token: props.token,
+                eventos: response.data
+            }
+
+
+        });
+
+        
+    }
+
+    
+
+
     sendDataHome = () => {
         this.props.AppData("home");
     }
@@ -18,7 +46,6 @@ class Home extends React.Component {
         this.props.AppData("mis_eventos");
     }
     
-
     render() {
         return (
             <nav >
