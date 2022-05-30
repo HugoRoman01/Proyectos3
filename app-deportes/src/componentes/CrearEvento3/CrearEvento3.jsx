@@ -18,6 +18,10 @@ class CrearEvento3 extends React.Component {
 
     }
 
+    sendDataBack2 = () => {
+      this.props.data("crear_evento2")
+  }
+
 
     render() {
       
@@ -34,9 +38,8 @@ class CrearEvento3 extends React.Component {
 
           <p className="texto1">Del día</p>
           <p className="texto4">al día</p>
-          <p className="texto2">desde las </p>
+          <p className="texto2">Desde las </p>
           <p className="texto3">hasta las</p>
-          <p className="texto5">.</p>
 
           <input type="date" id="fecha" required></input>
           <input type="date" id="fecha2" required></input>
@@ -45,7 +48,7 @@ class CrearEvento3 extends React.Component {
           <input type="time" id="hora_comienzo" min="08:00" max="21:00" required></input>
           <input type="time" id="hora_fin" min="08:00" max="21:00" required/>
 
-          <h1 className="flecha10">←</h1>
+          <h1 className="flecha10" onClick={this.sendDataBack}>←</h1>
           <button className="boton_creaevento4" onClick={this.sendData}> Guardar </button>
         </div>
       )

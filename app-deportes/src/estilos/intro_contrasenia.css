@@ -4,13 +4,13 @@
     align-items: flex-start;
     padding: 0%;
     position: absolute;
-    width:50%;
+    width:70%;
     left: 10%;
-    top: 10%;
+    top: 8%;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 37px;
     line-height: 79px;
   
   }
@@ -22,14 +22,14 @@
     padding: 0%;
   
     position: absolute;
-    width: 50%;
+    width: 150%;
     left: 10%;
-    top: 30%;
+    top: 32%;
     
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 29px;
     line-height: 48px;
   }
   
@@ -53,11 +53,11 @@
   
   #input1_password{
      top: 50%;
-     left:35%;
+     left:32%;
   }
   #input2_password{
-    top: 60%;
-    left:35%;
+    top: 65%;
+    left:32%;
   }
   
   

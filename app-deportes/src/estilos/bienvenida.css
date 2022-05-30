@@ -5,12 +5,11 @@
     padding: 0%;
     position: absolute;
     width:50%;
-    left: 10%;
-    top: 11%;
-  
+    left: 5%;
+    margin-top: 5%;  
     font-family: 'Montserrat';
     font-style: normal;
-    font-size: 250%;
+    font-size: 190%;
   
   }
   
@@ -21,13 +20,12 @@
     padding: 0%;
   
     position: absolute;
-    width: 34%;
-    left: 12%;
-    top: 26%;
-  
+    width: 680px;
+    left: 5%;
+    margin-top: 17%;  
     font-family: 'Montserrat';
     font-style: normal;
-    font-size: 200%;
+    font-size: 150%;
     
   }
   
@@ -42,9 +40,8 @@
     position: absolute;
     width: 382px;
     height: 48px;
-    left: 258px;
-    top: 568px;
-    
+    margin-left: 15% ;    
+    margin-top: 29%;  
     /* Crayola */
     border: 2px solid #157AFF;
     border-radius: 8px;
@@ -85,8 +82,8 @@
     background: linear-gradient(360deg, #157AFF -24.1%, rgba(147, 193, 255, 0) 59.02%);
     background-image: url(../imagenes/tio.png);
   
-    top: 25.3%;
-    left: 72.8%;
+    margin-top: 6.5%;
+    margin-left: 61.8%;
   }
   
   .imagen1-div_bienvenida{
@@ -98,8 +95,8 @@
     background: linear-gradient(360deg, #157AFF -24.1%, rgba(147, 193, 255, 0) 59.02%);
     background-image: url(../imagenes/tias.png);
   
-    top: 52.99%;
-    left: 60.5%;
+    margin-top: 25.7%;
+    margin-left: 45%;
   }
   
   

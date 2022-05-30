@@ -39,11 +39,11 @@ class RegisterPassword extends React.Component {
       </div>
 
       <div>
-        <input type="mail" id="input1_password" class="input-contra_password" placeholder="Contraseña"/>
+        <input type="password" id="input1_password" class="input-contra_password" placeholder="Contraseña"/>
       </div>
 
       <div>
-        <input type="mail" id="input2_password" class="input-contra_password" placeholder="Repite tu contraseña"/>
+        <input type="password" id="input2_password" class="input-contra_password" placeholder="Repite tu contraseña"/>
       </div>
 
       <h1 class="flecha_password" onClick={this.sendDataLink}>➞</h1>

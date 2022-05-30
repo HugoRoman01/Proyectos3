@@ -92,10 +92,10 @@
         gap: 10px;
 
         position: absolute;
-        width: 303px;
+        width: 3530px;
         height: 64px;
         left: 128px;
-        margin-top: 6%;
+        margin-top: 4%;
 
 
         /* Typeface/Headline/One/Semi Bold */
@@ -126,10 +126,10 @@
         gap: 10px;
         
         position: relative;
-        width: 550px;
+        width: 5500px;
         height: 48px;
         left: 128px;
-        margin-top: 10%;
+        margin-top: 8%;
         /* Typeface/Headline/Three/Medium */
         font-family: 'Montserrat';
         font-style: normal;
@@ -158,7 +158,7 @@
   overflow: hidden;
 
   position: relative;
-  width: 1370px;
+  width: 1150px;
   margin-top: 30px;
   left: 35px;
 
@@ -177,7 +177,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 56px;
 
     /* identical to box height, or 140% */
@@ -204,7 +204,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 48px;
+    font-size: 38px;
     line-height: 64px;
 
     /* identical to box height, or 133% */
@@ -229,7 +229,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 48px;
+    font-size: 38px;
     line-height: 64px;
 
     /* identical to box height, or 133% */
@@ -245,7 +245,7 @@
 }
 
 .botonhomeprueba {
-  position: relative;
+  position: absolute;
   z-index: 10;
     display: inline-block;
     padding: 15px 25px;
@@ -259,8 +259,8 @@
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin-left: 400%;
-    margin-bottom: auto;
+    margin-left: 58%;
+    top: 28%;
     width: 300px;
     height: 100px;
     font: 'Montserrat';

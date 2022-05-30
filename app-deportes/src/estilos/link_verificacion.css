@@ -4,14 +4,14 @@
     align-items: flex-start;
     padding: 0%;
     position: absolute;
-    width: 70%;
+    width: 170%;
     left: 10%;
     top: 13%;
   
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 200%;
+    font-size: 150%;
     line-height: 64px;
   }
   
@@ -41,8 +41,8 @@
     position: absolute;
     width: 19%;
     height: 40px;
-    left: 38%;
-    top: 40%;
+    left: 31%;
+    top: 46%;
   
     font-family: 'Montserrat';
     font-style: normal;
