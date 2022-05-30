@@ -1,11 +1,11 @@
 import React from "react";
 import  '../../../estilos/user.css';
 import velocista_0 from "../../../imagenes/velocista_0.png";
-import velocista_1 from "../../../imagenes/velocista_0.png";
-import inbatible_0 from "../../../imagenes/velocista_0.png";
-import inbatible_1 from "../../../imagenes/velocista_0.png";
-import estratega_0 from "../../../imagenes/velocista_0.png";
-import estratega_1 from "../../../imagenes/velocista_0.png";
+import velocista_1 from "../../../imagenes/velocista_1.png";
+import imbatible_0 from "../../../imagenes/imbatible_0.png";
+import imbatible_1 from "../../../imagenes/imbatible_1.png";
+import estratega_0 from "../../../imagenes/estratega_0.png";
+import estratega_1 from "../../../imagenes/estratega_1.png";
 
 class User extends React.Component {
     
@@ -48,18 +48,17 @@ class User extends React.Component {
         }
 
         if(user.insignias[1] == 1){
-            insignias[1] = inbatible_1;
+            insignias[1] = imbatible_1;
         }else{
-            insignias[1] = inbatible_0;
+            insignias[1] = imbatible_0;
         }
 
         if(user.insignias[2] == 1){
             insignias[2] = estratega_1;
         }else{
             insignias[2] = estratega_0;
-        }
+        }        
 
-    
         return (
             
             <div>
@@ -83,10 +82,10 @@ class User extends React.Component {
             <div className="userDescripcion">
                 <p className="title">ABOUT ME: </p>
                 <br />
-                {user.descripcion} 
+                {this.props.user.descripcion} 
             </div>
             <div className="userEventosCreados">
-                <p className="title2">EVENTOS CREADOS:    {user.eventos_creados}</p>
+                <p className="title2">EVENTOS CREADOS:    {this.props.user.eventos_creados}</p>
             </div>
             <div className="userEventosAsistidos">
                 <p className="title2">EVENTOS ASISTIDOS: {this.props.user.participaciones}</p>
@@ -99,12 +98,12 @@ class User extends React.Component {
                     <p>Velocista</p>
                </div>
                <div>
-                    <img className="insignia" src={insignias[1]} alt="inbatible"/>
-                    <p>Velocista</p>
+                    <img className="insignia" src={insignias[1]} alt="imbatible"/>
+                    <p>Imbatible</p>
                </div>
                <div>
                     <img className="insignia" src={insignias[2]} alt="estratega"/>
-                    <p>Velocista</p>
+                    <p>Estratega</p>
                </div>
                
             </div>

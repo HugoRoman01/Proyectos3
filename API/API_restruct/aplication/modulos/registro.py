@@ -11,6 +11,7 @@ def register():
     email = request.args.get('email')
     password = request.args.get('password')
     matriculacion = request.args.get('matriculacion')
+    descripcion = request.args.get('descripcion')
     
 
     if nombre_completo == None or email == None or password == None or matriculacion == None:
@@ -19,7 +20,7 @@ def register():
 
         return jsonify(respuesta)
 
-    usuario = registrar(nombre_completo, email, password, matriculacion)
+    usuario = registrar(nombre_completo, email, password, matriculacion, descripcion)
 
     if usuario:
         respuesta = jsonify({'status':'OK','id': usuario.id, 'nombre_completo': usuario.nombre_completo, 'email': usuario.email, 'matriculacion': usuario.matriculacion})
@@ -58,12 +59,12 @@ def test():
     return jsonify({'status': 'OK'})
 
 
-def registrar(nombre_completo, email, password, matriculacion):
+def registrar(nombre_completo, email, password, matriculacion, descripcion):
 
     user = db.session.query(User).filter_by(email=email)
 
     if user.count() == 0:
-        usuario = crearUsuario(nombre_completo, email, password, matriculacion)
+        usuario = crearUsuario(nombre_completo, email, password, matriculacion, descripcion)
 
         # Creo un token aleatorio
         token = generarTokenAleatorio()
@@ -72,20 +73,19 @@ def registrar(nombre_completo, email, password, matriculacion):
         guardarToken(token=token, user_id=usuario.id)
 
         # Envio el email de confirmación
-        print("Enviando email de confirmacion")
         enviarEmailConfirmacion(email, token)
-        print("Email enviado")
 
         return usuario
     else:
         return None
 
-def crearUsuario(nombre_completo, email, password, matriculacion):
+def crearUsuario(nombre_completo, email, password, matriculacion, descripcion):
     
     usuario = User(nombre_completo=nombre_completo,
                     email=email,
                     hash_password=hashearPassword(password),
-                    matriculacion=matriculacion)
+                    matriculacion=matriculacion,
+                    descripcion=descripcion)
     db.session.add(usuario)
     db.session.commit()
     print("Usuario creado!")

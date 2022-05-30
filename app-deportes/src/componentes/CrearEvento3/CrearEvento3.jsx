@@ -5,12 +5,16 @@ import React from 'react'
 class CrearEvento3 extends React.Component {
 
     sendData = () => {
-      var fecha = document.getElementById("fecha").value
-      var hora_comienzo = document.getElementById("hora_comienzo").value
-      var hora_fin = document.getElementById("hora_fin").value
+      var fecha_inicio = document.getElementById("fecha").value;
+      var fecha_fin = document.getElementById("fecha2").value;
+      var hora_inicio = document.getElementById("hora_comienzo").value;
+      var hora_fin = document.getElementById("hora_fin").value;
 
-      this.props.data("crear_evento4", {fecha:fecha, hora_comienzo:hora_comienzo, hora_fin:hora_fin});
+      if(fecha_inicio === "" || fecha_fin === "" || hora_inicio === "" || hora_fin === ""){
+        alert("Todos los campos son obligatorios");
+      }
 
+      this.props.data("crear_evento4", {fecha_inicio:fecha_inicio, fecha_fin:fecha_fin, hora_inicio:hora_inicio, hora_fin:hora_fin});
 
     }
 
@@ -42,7 +46,7 @@ class CrearEvento3 extends React.Component {
           <input type="time" id="hora_fin" min="08:00" max="21:00" required/>
 
           <h1 className="flecha10">←</h1>
-          <button className="boton_creaevento4"> Guardar </button>
+          <button className="boton_creaevento4" onClick={this.sendData}> Guardar </button>
         </div>
       )
     }

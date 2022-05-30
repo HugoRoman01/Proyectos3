@@ -1,7 +1,11 @@
 import '../../estilos/crear_evento4.css'
+import calendario from '../../imagenes/calendario.png'
 import React from 'react'
 
 class CrearEvento4 extends React.Component {
+
+    sendDataHome = () => { this.props.data("home") }
+    sendDataEvento = () => { this.props.data("evento_preview") }
 
     render() {
       
@@ -21,7 +25,7 @@ class CrearEvento4 extends React.Component {
             <button className="boton_creaevento3"> Volver al inicio </button>
             <button className="boton_creaevento3_2"> Ir al evento</button>
 
-            <img className="calendario" alt="error" src="../imagenes/calendario.png"></img> 
+            <img src={calendario} alt="Calendario img"/>
             
         </div>
       )

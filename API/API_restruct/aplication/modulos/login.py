@@ -67,7 +67,7 @@ def getTokenUser(user_id):
     insignias = getInsignias(user.id)
     eventos_creados = getEventosCreados(user.id)
 
-    data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'participaciones': participaciones, 'insignias': insignias, 'eventos_creados': eventos_creados}
+    data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'participaciones': participaciones, 'insignias': insignias, 'eventos_creados': eventos_creados, 'descripcion': user.descripcion}
     return data
 
 def getUser(email, password):
@@ -82,8 +82,9 @@ def getUser(email, password):
         
         participaciones = getParticipaciones(user.id)
         insignias = getInsignias(user.id)
+        eventos_creados = getEventosCreados(user.id)
 
-        data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'activo': user.activo, 'participaciones': participaciones, 'insignias': insignias}
+        data = {'id': user.id, 'nombre_completo': user.nombre_completo, 'email': user.email, 'matriculacion': user.matriculacion, 'activo': user.activo, 'participaciones': participaciones, 'insignias': insignias, 'eventos_creados':eventos_creados,'descripcion':user.descripcion}
         return data
 
     return None

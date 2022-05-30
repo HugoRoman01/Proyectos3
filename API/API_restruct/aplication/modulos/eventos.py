@@ -11,11 +11,30 @@ def getEventos():
     query = db.session.query(Evento)
     
     data = []
-    
-    username = getUsernameCreador(query.first().id_usuario)
 
     for evento in query:
+        username = getUsernameCreador(evento.id_usuario)
         data.append({'id_evento': evento.id_evento, 'user_creador': username, 'id_deporte': evento.id_deporte, 'max_participantes': evento.max_participantes, 'nombre_evento': evento.nombre_evento, 'descripcion_evento': evento.descripcion_evento, 'fecha_inicio': evento.fecha_inicio, 'fecha_fin': evento.fecha_fin, 'hora_inicio': str(evento.hora_inicio), 'hora_fin': str(evento.hora_fin)})
+
+    data.sort(key=lambda x: x['id_evento'],reverse=True)
+
+    respuesta = jsonify(data)
+    respuesta.headers.add('Access-Control-Allow-Origin', '*')
+    return respuesta
+
+@eventos.route('/getEventosUser', methods=['GET'])
+@jwt_required()
+def getEventosUser():
+
+    query = db.session.query(Evento).filter_by(id_usuario=get_jwt_identity())
+    
+    data = []
+
+    for evento in query:
+        username = getUsernameCreador(evento.id_usuario)
+        data.append({'id_evento': evento.id_evento, 'user_creador': username, 'id_deporte': evento.id_deporte, 'max_participantes': evento.max_participantes, 'nombre_evento': evento.nombre_evento, 'descripcion_evento': evento.descripcion_evento, 'fecha_inicio': evento.fecha_inicio, 'fecha_fin': evento.fecha_fin, 'hora_inicio': str(evento.hora_inicio), 'hora_fin': str(evento.hora_fin)})
+
+    data.sort(key=lambda x: x['id_evento'],reverse=True)
 
     respuesta = jsonify(data)
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
@@ -26,7 +45,6 @@ def getEventos():
 def inscribir():
 
     current_user_id = get_jwt_identity()
-    id_evento = request.args.get('id_evento')
 
     if id_evento == None:
         response = jsonify({'status': 'ERROR', 'message': 'Faltan parametros'})
@@ -61,7 +79,7 @@ def crearEvento():
     id_deporte = request.args.get('id_deporte')
     max_participantes = request.args.get('max_participantes')
     nombre_evento = request.args.get('nombre_evento')
-    descripcion_evento = request.args.get('descripcion_evento')
+    descripcion_evento = request.args.get('descripcion')
     fecha_inicio = request.args.get('fecha_inicio')
     fecha_fin = request.args.get('fecha_fin')
     hora_inicio = request.args.get('hora_inicio')
@@ -79,7 +97,9 @@ def crearEvento():
     # Si el usuario no es administrador (id = 1) solo puede crear eventos hasta 15 dias
     if current_user_id != 1:
         if fecha_inicio > datetime.now() + timedelta(days=15) or fecha_fin > datetime.now() + timedelta(days=15):
-            return jsonify({'message': 'No puedes crear eventos en menos de 15 dias'})
+            respuesta = jsonify({'message': 'No puedes crear eventos con menos de 15 dias de antelacion'})
+            respuesta.headers.add('Access-Control-Allow-Origin', '*')
+            return respuesta
 
     # Primero comprobamos que el inicio sea anterior al fin tanto en fecha como en hora
     if fecha_inicio > fecha_fin or (fecha_inicio == fecha_fin and hora_inicio > hora_fin) or (hora_inicio >= hora_fin):
@@ -128,5 +148,5 @@ def comprobarDisponibilidad(id_deporte, fecha_inicio, fecha_fin, hora_inicio, ho
 
 
 def getUsernameCreador(user_id):
-    query = db.session.query(Usuario).filter_by(id_usuario=user_id)
-    return query.first().username
+    query = db.session.query(User).filter_by(id=user_id)
+    return query.first().nombre_completo

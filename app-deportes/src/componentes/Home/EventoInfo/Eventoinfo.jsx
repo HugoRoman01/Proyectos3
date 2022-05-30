@@ -4,20 +4,28 @@ import '../../../estilos/eventoinfo.css';
 
 class EventoInfo extends React.Component {
 
-    render() {
-        var evento = {
-            id_evento: 1,
-            id_usuario: 1,
-            id_deporte: 1,
-            max_participantes: 10,
-            nombre_evento: "Torneo de Padel",
-            fecha_inicio: "2020-01-01",
-            fecha_fin: "2020-01-02",
-            hora_inicio: "12:00",
-            hora_fin: "13:00",
-            descipcion: "Torneo bien chingon",
+    sendDataHome = () => {
+        this.props.data("home")
+    }
 
-        };
+    sendDataUser = () => {
+        this.props.data("usuario")
+    }
+
+    sendDataCrear = () => {
+        this.props.data("crear_evento")
+    }
+
+    sendDataMisEventos = () => {
+        this.props.data("mis_eventos")
+    }
+
+    sendDataUnirse = () => {
+        this.props.data("inscribirse", this.props.evento.id_evento)
+    }
+
+    render() {
+        var evento = this.props.evento
 
         switch (evento.id_deporte) {
             case 1:
@@ -52,9 +60,9 @@ class EventoInfo extends React.Component {
                     <div className="eventotitulo"> {evento.nombre_evento} </div>
                     <div className="eventofecha"> {evento.fecha_inicio} - {evento.fecha_fin} </div>
                 </div>
-                <div className="eventosub">{evento.descipcion}</div>
+                <div className="eventosub">{evento.descripcion_evento}</div>
                 <div className="eventoinfo1">
-                    Creado por: {evento.id_usuario}
+                    Creado por: {evento.user_creador}
                     <br />
                     Deporte: {evento.id_deporte}
                     <br />

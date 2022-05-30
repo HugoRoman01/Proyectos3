@@ -19,12 +19,7 @@ class RegisterEmail extends React.Component {
       return
     }
 
-    if (matriculacion === "") {
-      alert("Introduce una matriculación");
-      return
-    }
-
-    this.props.AppData("register_password", mail);
+    this.props.AppData("register_password", {email: mail, matriculacion: matriculacion});
   }
 
   
@@ -43,9 +38,14 @@ class RegisterEmail extends React.Component {
       <div>
         <input type="mail" className="input_mail_email" id="input_mail_email" placeholder="Correo electrónico"/>
         <select className="input_matriculacion_email">
-                <option value="1">INSO</option>
-                <option value="2">DIDI</option>
-                <option value="3">ANIMACION</option>
+                <option value="INSO">INSO</option>
+                <option value="ANIV">ANIV</option>
+                <option value="ANIG">ANIG</option>
+                <option value="MAIS">MAIS</option>
+                <option value="FIIS">FIIS</option>
+                <option value="DIDI">DIDI</option>
+                <option value="DIPI">DIPI</option>
+                <option value="DIPG">DIPG</option>
             </select>
       </div>
 

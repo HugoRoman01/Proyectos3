@@ -41,7 +41,7 @@ class App extends React.Component {
         url += "login/iniciarSesion?email=" + parametros.email + "&password=" + parametros.password;
         break;
       case 'registro':
-        url += "registro/crearCuenta?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion;
+        url += "registro/crearCuenta?nombre_completo=" + parametros.nombre_completo + "&email=" + parametros.email + "&password=" + parametros.password + "&matriculacion=" + parametros.matriculacion + "&descripcion=" + parametros.descripcion;
         break;
       default:
         return null;
@@ -74,7 +74,8 @@ class App extends React.Component {
       'matriculacion':data.matriculacion,
       'insignias':data.insignias,
       'participaciones':data.participaciones,
-      'eventos_creados':data.eventos_creados
+      'eventos_creados':data.eventos_creados,
+      'descripcion':data.descripcion
     }
 
     const cookies = new Cookies();
@@ -101,8 +102,14 @@ class App extends React.Component {
       case 'cookieLogin':
         this.llamarAPI('getUserCookie', {}, this.state.cookie);
         break;
+      case 'register_email':
+        this.setState({ descripcion:parametros})
+        break;
       case 'register_password':
-        this.setState({ email: parametros });
+        this.setState({ 
+          descripcion:this.state.descripcion,
+          email: parametros.email,
+          matriculacion: parametros.matriculacion});
         break;
 
       case  'link_verificacion':
@@ -111,9 +118,7 @@ class App extends React.Component {
         let nombre = this.state.email.split('@')[0].split('.');
         let nombre_completo = nombre[0] + " " + nombre[1];
 
-        let matriculacion = "";
-
-        this.llamarAPI('registro', {'nombre_completo':nombre_completo, 'email':this.state.email, 'password':password, 'matriculacion':matriculacion});
+        this.llamarAPI('registro', {'nombre_completo':nombre_completo, 'email':this.state.email, 'password':password, 'matriculacion':this.state.matriculacion, 'descripcion':this.state.descripcion});
 
         break;
 
@@ -148,9 +153,9 @@ class App extends React.Component {
       case 'link_verificacion':
         return ( <RegisterLinkVerificacion AppData={this.callbackFunction} email={this.state.email}/> );
       case 'home':
-        return ( <Home user={this.state.usuario} token={this.state.token}/> );
+        return ( <Home user={this.state.usuario } token={this.state.token}/> );
       case 'register_descripcion':
-        return ( <RegisterDescripcion/> );
+        return ( <RegisterDescripcion AppData={this.callbackFunction}/> );
       default:
         return ( <h1>Cargando</h1> );
 

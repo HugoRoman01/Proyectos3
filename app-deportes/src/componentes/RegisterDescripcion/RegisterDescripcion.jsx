@@ -9,7 +9,8 @@ class RegisterDescripcion extends React.Component {
             alert("Introduce una descripción");
             return
         }
-        this.props.AppData("register_email");
+
+        this.props.AppData("register_email", descripcion);
     }
 
     render() {

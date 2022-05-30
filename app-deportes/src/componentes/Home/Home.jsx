@@ -20,6 +20,7 @@ class Home extends React.Component {
             eventos: [],
             page: "home"
         }
+
     }
 
     callbackFunction = (data, parametros) => {
@@ -55,7 +56,7 @@ class Home extends React.Component {
         }else if(data === "crear_evento3"){
             var new_evento = this.state.new_evento;
             new_evento.nombre_evento = parametros.nombre_evento;
-            new_evento.fecha_inicio = parametros.descripcion;
+            new_evento.descripcion = parametros.descripcion;
             new_evento.numero_jugadores = parametros.numero_jugadores;
 
             this.setState({
@@ -63,25 +64,59 @@ class Home extends React.Component {
                 token: this.state.token,
                 eventos: this.state.eventos,
                 page: "crear_evento3",
-                new_evento: new_evento
-            })
+                evento: new_evento
+            })          
+
         }else if(data === "crear_evento4"){
-            this.setState({
-                user: this.state.user,
-                token: this.state.token,
-                eventos: this.state.eventos,
-                page: "crear_evento4"
-            })
-        }else if(data === "evento_info"){
+            var new_evento = this.state.new_evento;
+            new_evento.fecha_inico = parametros.fecha_inicio;
+            new_evento.fecha_fin = parametros.fecha_fin;
+            new_evento.hora_inicio = parametros.hora_inicio;
+            new_evento.hora_fin = parametros.hora_fin;
+
+
+            var url = "http://127.0.0.1:5000/api/eventos/crearEvento?jwt="+this.props.token + "&nombre_evento="+this.state.new_evento.nombre_evento+"&descripcion="+this.state.new_evento.descripcion+"&max_participantes="+this.state.new_evento.numero_jugadores+"&id_deporte="+this.state.new_evento.id_deporte+"&fecha_inicio="+this.state.new_evento.fecha_inico+"&fecha_fin="+this.state.new_evento.fecha_fin+"&hora_inicio="+this.state.new_evento.hora_inicio+"&hora_fin="+this.state.new_evento.hora_fin;
+
+            axios.get(url).then (res => {
+    
+                if(res.data.status === "OK"){
+                    this.setState({
+                        user: this.state.user,
+                        token: this.state.token,
+                        eventos: this.state.eventos.push(this.state.new_evento),
+                        page: "crear_evento4"
+                    })
+                }else{
+                    this.setState({
+                        user: this.state.user,
+                        token: this.state.token,
+                        eventos: this.state.eventos,
+                        page: "home"
+                    })
+                }
+    
+            }); 
+
+
+        }else if(data === "ver_evento"){
             this.setState({
                 user: this.state.user,
                 token: this.state.token,
                 eventos: this.state.eventos,
                 page: "evento_info",
-                evento: parametros
+                evento: this.state.eventos[parametros]
             })
+        }else if(data === "inscribirse"){
+
+            var url = "http://127.0.0.1:5000/api/eventos/inscribir?jwt="+this.props.token + "&id_evento="+parametros;
+
+            axios.get(url)
+
+            alert("Te has inscrito al evento");
         }
     }
+
+    
 
     componentDidMount() {
 
@@ -99,6 +134,7 @@ class Home extends React.Component {
     }
     
     render() {
+        
         switch (this.state.page) {
             case "home":
                 return ( <HomePrueba data={this.callbackFunction} eventos={this.state.eventos} nombre={this.props.user.nombre} token={this.props.token}/> );
