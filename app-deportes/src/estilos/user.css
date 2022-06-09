@@ -83,7 +83,7 @@
     .userBanner{
         z-index: 0;
         position: absolute;
-        width: 1880px;
+        width: 1340px;
         height: 246px;
         margin-left: 1%;
         margin-top: 2%;
@@ -100,10 +100,10 @@
         gap: 10px;
 
         position: absolute;
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
         margin-left: 1%;
-        margin-top: 3%;
+        margin-top: 6%;
 
         background: linear-gradient(360deg, rgba(0, 0, 0, 0.2) -49.2%, rgba(0, 0, 0, 0.130081) -32%, rgba(0, 0, 0, 0) 0%), url(../imagenes/userimg.png);
 
@@ -120,10 +120,10 @@
         gap: 10px;
         
         position: absolute;
-        width: 220px;
+        width: 2200px;
         height: 48px;
-        left: 293px;
-        margin-top: 8%;
+        left: 213px;
+        margin-top: 10%;
         /* Typeface/Headline/Three/Semi Bold */
         font-family: 'Montserrat';
         font-style: normal;
@@ -154,8 +154,8 @@
         position: absolute;
         width: 89px;
         height: 40px;
-        left: 294px;
-        margin-top: 11%;
+        left: 217px;
+        margin-top: 15%;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 600;
@@ -187,10 +187,10 @@
         gap: 20px;
 
         position: absolute;
-        width: 409px;
-        height: 308px;
+        width: 359px;
+        height: 258px;
         left: 117px;
-        margin-top: 21%;
+        margin-top: 27%;
         /* Bright/Full Bright */
         background: #FFFFFF;
 
@@ -206,6 +206,7 @@
 
     .title{
         
+        margin-top: 0%;
         width: 165px;
         height: 48px;
 
@@ -242,8 +243,8 @@
         position: absolute;
         width: 100px;
         height: 518px;
-        margin-top: 29%;
-        margin-left: 12%;
+        margin-top: 35%;
+        margin-left: 18%;
 
         /* Crayola */
         background: #157AFF;
@@ -291,8 +292,8 @@
         position: absolute;
         width: 100px;
         height: 518px;
-        margin-top: 36%;
-        margin-left: 12%;
+        margin-top: 45%;
+        margin-left: 18%;
 
         /* Crayola */
         background: #157AFF;
@@ -303,10 +304,10 @@
 .userBox{
     
         position: absolute;
-        width: 750px;
+        width: 730px;
         height: 632px;
-        margin-left: 48%;
-        margin-top: 17%;
+        margin-left: 45%;
+        margin-top: 25%;
         /* Gradient Crayola */
         background: linear-gradient(180deg, #157AFF 0%, #FFFFFF 106.94%, rgba(102, 168, 255, 0) 106.94%);
         border-radius: 80px 20px;
@@ -322,8 +323,8 @@
     position: absolute;
     width: 610px;
     height: 148px;
-    margin-left: 49.5%;
-    margin-top: 20%;
+    margin-left: 46.5%;
+    margin-top: 28%;
     /* Bright/Full Bright */
     background: #FFFFFF;
 
@@ -359,15 +360,14 @@
 .usercontacto{
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 14px;
     gap: 20px;
 
     position: absolute;
-    width: 500px;
+    width: 660px;
     height: 200px;
-    margin-left: 53%;
-    margin-top: 35%;
+    margin-left: 46.5%;
+    margin-top: 50%;
 
     /* Bright/Full Bright */
     background: #FFFFFF;
@@ -380,12 +380,13 @@
 .title3{
     width: 400px;
     height: 40px;
+    text-align: center;
 
     /* Typeface/Headline/Four/Semi Bold */
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 40px;
 
     /* identical to box height, or 167% */
@@ -398,5 +399,30 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin-left: 3%;
+    margin-left: 20%;
+}
+
+.title6{
+  width: 400px;
+  height: 40px;
+  text-align: center;
+
+  /* Typeface/Headline/Four/Semi Bold */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
+
+  /* identical to box height, or 167% */
+
+  /* Dark/Grand Dark */
+  color: #1F1F1F;
+
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-left: 20%;
 }

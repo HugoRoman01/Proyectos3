@@ -80,7 +80,7 @@ class User extends React.Component {
                 <div className="userMatriculacion"> {this.props.user.matriculacion} </div>
             </div>
             <div className="userDescripcion">
-                <p className="title">ABOUT ME: </p>
+                <p className="title">About me </p>
                 <br />
                 {this.props.user.descripcion} 
             </div>
@@ -108,8 +108,8 @@ class User extends React.Component {
                
             </div>
             <div className="usercontacto"> 
-                <p className="title3"> CONTACTO: {this.props.user.email} </p>
-                <p className="title3">Estudiante de: {this.props.user.matriculacion} </p>
+                <p className="title3"> Contacto: {this.props.user.email} </p>
+                <p className="title6">Estudiante de: {this.props.user.matriculacion} </p>
             </div>
 
             </div>

@@ -36,9 +36,9 @@ class HomePrueba extends React.Component {
             let id_button = "button-" + key; 
             return (
                 <div className="eventotarjeta" id={id_evento} key={id_evento} onClick={ () => {this.sendDataVerEvento(key)}}>
-                    <div className="fecha"> {evento.fecha_inicio} <button className="botonhomeprueba" id={id_button} onClick={ () => {this.sendDataInscribirse(evento.id_evento)}}>Unirse</button></div>
-                    <div className="nombre"> {evento.nombre_evento}:  {evento.max_participantes} participantes  </div>
-                    <div className="hora">{evento.hora_inicio}</div>
+                    <div className="fecha"> {evento.fecha_inicio} </div>
+                    <div className="nombre"> {evento.nombre_evento}:  {evento.max_participantes} participantes <p className="hora">{evento.hora_inicio} </p></div>
+                    <button className="botonhomeprueba" id={id_button} onClick={ () => {this.sendDataInscribirse(evento.id_evento)}}>Unirse</button>
                 </div>
             );
         });

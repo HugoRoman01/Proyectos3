@@ -22,14 +22,14 @@
     padding: 0%;
   
     position: absolute;
-    width: 50%;
+    width: 60%;
     left: 10%;
     top: 30%;
     
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 48px;
 }
 
@@ -37,8 +37,8 @@
     position: absolute;
     width: 600px;
     height: 68px;
-    left: 700px;
-    top: 480px;
+    left: 370px;
+    top: 420px;
     text-align: center;
     
     /* Crayola */
